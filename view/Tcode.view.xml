@@ -1,0 +1,58 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" 
+xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:u="sap.ui.unified" 
+controllerName="yit.CODE2DOC.controller.Tcode" displayBlock="true">
+	<Shell id="shell">
+		<App id="app">
+			<pages><Page title="Doc Dev - Documentador de Desenvolvimentos" showNavButton="true" navButtonTooltip="Voltar" navButtonPress="Voltar" backgroundDesign="Solid">
+       		
+               <content>
+               
+		<form:Form id="FormDisplay354" editable="false">
+			<form:title>
+				<core:Title text="Geração por Transação"/>
+			</form:title>
+			<form:layout>
+				<form:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+			</form:layout>
+			<form:formContainers>
+				<form:FormContainer>
+					<form:formElements>
+						<form:FormElement label="Nome do Documento">
+							<form:fields>
+								<Input xmlns="sap.m" id="txtArq" width="100%"/>
+							</form:fields>
+						</form:FormElement>
+						<form:FormElement label="Código da Transação">
+							<form:fields>
+								<Input xmlns="sap.m" id="txtNomeTemp" busyIndicatorSize="Small"/>
+							</form:fields>
+						</form:FormElement>
+						<form:FormElement label="Template do Documento">
+							<form:fields>
+										<ComboBox xmlns="sap.m" id="fil_Template">
+											<items>
+												<core:Item xmlns:core="sap.ui.core" key="" text=" " id="fil_Template1"/>
+												<core:Item xmlns:core="sap.ui.core" key="Template 1" text="Template 1" id="fil_Template2"/>
+												<core:Item xmlns:core="sap.ui.core" key="Template 2" text="Template 2" id="fil_Template3"/>
+											</items>
+										</ComboBox>
+							</form:fields>
+						</form:FormElement>
+						<form:FormElement label="">
+							<form:fields>
+                                <Button id="bt2" text="Gerar Documento" press="GerarDoc" width="200px"/>
+							</form:fields>
+						</form:FormElement>
+					</form:formElements>
+				</form:FormContainer>
+			</form:formContainers>
+		</form:Form>
+            
+
+
+			</content>
+			</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

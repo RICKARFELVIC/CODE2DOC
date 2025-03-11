@@ -1,0 +1,373 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.f" xmlns:form="sap.form" xmlns:lform="sap.ui.layout.form"
+	xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:fb="sap.ui.comp.filterbar" xmlns:u="sap.ui.unified"
+	controllerName="yit.CODE2DOC.controller.Extracao" displayBlock="true" height="100%">
+	<core:InvisibleText text="InvisibleText" id="text1"/>
+	<Page xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" title="CODE2DOC - Seleção de Documentos"
+		showNavButton="true" navButtonTooltip="Voltar" navButtonPress="Voltar" backgroundDesign="Solid" showFooter="false" enableScrolling="true">
+
+		
+									
+					
+		<f:DynamicPage id="Page0" showFooter="true" fitContent="true" visible="true">
+			<!-- DynamicPage Title -->
+			<!--<f:title>-->
+			<!--	<f:DynamicPageTitle>-->
+					<!--<f:heading>-->
+					<!--	<Button-->
+					<!--			text="Global Action"-->
+					<!--			type="Transparent"/>-->
+					<!--</f:heading>-->
+					<!--<f:actions>-->
+					<!--	<ToolbarSpacer/>-->
+					<!--</f:actions>-->
+			<!--	</f:DynamicPageTitle>-->
+			<!--</f:title>-->
+			<!-- DynamicPage Header -->
+			<f:header>
+				<f:DynamicPageHeader pinnable="false">
+					<f:content>
+							<Table class="sapUiSizeCompact" mode="SingleSelectLeft" id="tabListaDoc" selectionChange="SelListaDoc" inset="false"
+				items="{ path: '/', sorter: { path: 'Name' } }">
+				<headerToolbar>
+					<Toolbar>
+						<Title text="Lista de Documentos Pendentes" level="H2"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="ID do Documento"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Título do Documento"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+						<Text text="Versão"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+						<Text text="Nome do Projeto"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+						<Text text="Data da Criação"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+						<Text text="Template"/>
+					</Column>
+					<!--<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">-->
+					<!--	<Text text="Status"/>-->
+					<!--</Column>-->
+				</columns>
+				<items>
+					<ColumnListItem type="Active">
+						<cells>
+							<Text text="001"/>
+							<Text text="A0101"/>
+							<Text text="1000"/>
+							<Text text="A0101"/>
+							<Text text="1000"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+				<MessageStrip id="msgTab" text="Selecione um documento na lista para adicionar objetos" showIcon="true" showCloseButton="true"
+					class="sapUiMediumMarginBottom"></MessageStrip>
+									
+					</f:content>
+				</f:DynamicPageHeader>
+			</f:header>
+			<f:content>				
+			</f:content>
+			<f:footer>
+				<OverflowToolbar id="otbFooter3">
+					<ToolbarSpacer/>
+					<Button id="AddMore0" type="Emphasized" text="Adicionar Mais Objetos" press="addMaisObj" visible="false">
+						<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+					</Button>
+					<Button type="Accept" id="btSolicita0" text="Selecionar Documento" press="SelecDoc">
+						<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+					</Button>
+				</OverflowToolbar>
+			</f:footer>
+		</f:DynamicPage>
+			<lform:Form id="formDadosDoc" editable="false" width="100%" visible="false">
+				<lform:title>
+					<core:Title text="Dados do Documento"/>
+				</lform:title>
+				<lform:layout>
+					<lform:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4"
+						emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+				</lform:layout>
+				<lform:formContainers>
+					<lform:FormContainer>
+						<lform:formElements>
+							<lform:FormElement label="ID do Documento">
+								<lform:fields>
+									<VBox>
+										<Text text="ID" id="titIDDocumento"/>
+									</VBox>
+								</lform:fields>
+							</lform:FormElement>
+							<lform:FormElement label="Título da Especificação Técnica">
+								<lform:fields>
+									<VBox>
+										<Text text="TESTE" id="titET"/>
+									</VBox>
+								</lform:fields>
+							</lform:FormElement>
+							<lform:FormElement label="Versão Inicial do Documento">
+								<lform:fields>
+									<VBox>
+										<Text text="1.0" id="titVersao"/>
+									</VBox>
+								</lform:fields>
+							</lform:FormElement>
+							<lform:FormElement label="Nome do Projeto">
+								<lform:fields>
+									<VBox>
+										<Text text="Projeto TESTE" id="titProjeto"/>
+									</VBox>
+								</lform:fields>
+							</lform:FormElement>
+							<lform:FormElement label="Template">
+								<lform:fields>
+									<VBox>
+										<Text text="Template TESTE" id="titTemplate"/>
+									</VBox>
+								</lform:fields>
+							</lform:FormElement>
+						</lform:formElements>
+					</lform:FormContainer>
+				</lform:formContainers>
+			</lform:Form>
+		<f:DynamicPage id="Page1" showFooter="true" fitContent="true" visible="false">
+			<!-- DynamicPage Title -->
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<Title text="Selecione Objetos para Inclusão no Documento"/>
+					</f:heading>
+					<f:actions>
+						<ToolbarSpacer/>
+						<!--<Button-->
+						<!--		text="Global Action"-->
+						<!--		type="Transparent"/>-->
+						<!--<Button-->
+						<!--		text="Toggle Footer"-->
+						<!--		type="Transparent"-->
+						<!--		press="onToggleFooter"/>-->
+						<!--<Button-->
+						<!--		icon="sap-icon://action"-->
+						<!--		type="Transparent"/>-->
+					</f:actions>
+				</f:DynamicPageTitle>
+			</f:title>
+			<!-- DynamicPage Header -->
+			<f:header>
+				<f:DynamicPageHeader pinnable="true">
+					<f:content>
+						<fb:FilterBar class="sapUiSizeCompact" id="filterbar" reset="onReset" search="onSearch" useToolbar="false" showGoOnFB="true">
+							<fb:filterItems>
+								<fb:FilterItem name="TipoObjeto" label="Tipo de Objeto">
+									<fb:control>
+										<!--<Input width="100%" id="srTipoObjeto"/>-->
+										<Select id="srcTipoObjeto">
+											<core:Item text="Todos" key="TODOS"/>
+											<!--<core:Item text="Pacote" key="DEVC"/>-->
+											<core:Item text="Classe" key="CLAS"/>
+											<core:Item text="Programa" key="PROG"/>
+											<core:Item text="Grupo de Funções" key="FUGR"/>
+											<core:Item text="Módulo de Função" key="FUNC"/>
+											<core:Item text="Aplicação Web Dynpro" key="WDYA"/>
+											<core:Item text="Aplicação BSP / FIORI" key="WAPA"/>
+										</Select>
+									</fb:control>
+								</fb:FilterItem>
+								<fb:FilterItem name="NomeObjeto" label="Nome do Objeto">
+									<fb:control>
+										<Input width="100%" id="srcNomeObjeto"/>
+									</fb:control>
+								</fb:FilterItem>
+								<!--<fb:FilterItem name="Ambiente" label="Ambiente">-->
+								<!--	<fb:control>-->
+								<!--		<Input width="100%" id="srcAmbiente"/>-->
+								<!--	</fb:control>-->
+								<!--</fb:FilterItem>-->
+								<fb:FilterItem name="Pacote" label="Pacote">
+									<fb:control>
+										<Input width="100%" id="srcPacote"/>
+									</fb:control>
+								</fb:FilterItem>
+								<fb:FilterItem name="Data de Criação" label="Data de Criação">
+									<fb:control>
+										<!--<Input width="100%" id="srcDtCriacao"/>-->
+										<DatePicker
+										value=""
+										id="srcDtCriacao" displayFormat="dd/MM/yyyy"
+										formatPattern="dd/mm/yyyy" valueFormat="dd/mm/yyyy"/>
+									</fb:control>
+								</fb:FilterItem>
+								<fb:FilterItem name="Request" label="Request">
+									<fb:control>
+										<Input width="100%" id="srcRequest"/>
+									</fb:control>
+								</fb:FilterItem>
+								<!--<fb:FilterItem name="Autor" label="Autor">-->
+								<!--	<fb:control>-->
+								<!--		<Input width="100%" id="srcAutor"/>-->
+								<!--	</fb:control>-->
+								<!--</fb:FilterItem>-->
+							</fb:filterItems>
+						</fb:FilterBar>
+					</f:content>
+				</f:DynamicPageHeader>
+			</f:header>
+			<f:content>
+				<!--LISTA-->
+				<Table class="sapUiSizeCompact" noDataText="Sem objetos para exibir" selectionChange="selItem" mode="SingleSelectLeft" id="TabExtracao"
+					sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" items="{/LISTA_PROGRAMASSet}">
+					<columns>
+						<Column width="20px">
+							<header>
+								<!--<CheckBox text=""/>-->
+							</header>
+						</Column>
+						<Column width="15%">
+							<header>
+								<Text text="Tipo Objeto" textAlign="Center" textDirection="RTL"/>
+							</header>
+						</Column>
+						<Column width="23%">
+							<header>
+								<Text text="Nome Objeto" textAlign="Center" textDirection="RTL"/>
+							</header>
+						</Column>
+						<!--<Column width="10%">-->
+						<!--	<header>-->
+						<!--		<Text text="Ambiente" textAlign="Center" textDirection="RTL"/>-->
+						<!--	</header>-->
+						<!--</Column>-->
+						<Column width="15%">
+							<header>
+								<Text text="Pacote" textAlign="Center" textDirection="RTL"/>
+							</header>
+						</Column>
+						<Column width="12%">
+							<header>
+								<Text text="Data Criação" textAlign="Center" textDirection="RTL"/>
+							</header>
+						</Column>
+						<Column width="13%">
+							<header>
+								<Text text="Request" textAlign="Center" textDirection="RTL"/>
+							</header>
+						</Column>
+						<Column width="12%">
+							<header>
+								<Text text="Autor" textAlign="Center" textDirection="RTL"/>
+							</header>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem id="favTableItemTemplate" type="Active" selected="true">
+							<cells>
+								<CheckBox text="" selected="false" id="boxCampos1"/>
+								<Text text="{TIPOOBJ}" textAlign="Center" textDirection="RTL"/>
+								<Text text="{NOMEOBJ}" textAlign="Center" textDirection="RTL" id="NOMEOBJ"/>
+								<!--<Text text="{AMBIENTE}" textAlign="Center" textDirection="RTL" id="AMBIENTE"/>-->
+								<Text text="{PACOTE}" textAlign="Center" textDirection="RTL"/>
+								<Text text="{DATACRIA}" textAlign="Center" textDirection="RTL" id="DATACRIA"/>
+								<Text text="{REQUEST}" textAlign="Center" textDirection="RTL"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</f:content>
+			<f:footer>
+				<OverflowToolbar id="otbFooter">
+					<ToolbarSpacer/>
+					<Button text="Exibir Objetos" press="ProximaTela" ariaHasPopup="Dialog">
+						<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+					</Button>
+					<Button id="AddObj" type="Emphasized" text="Adicionar na Lista de Objetos" press="AddMore" visible="false">
+						<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+					</Button>
+					<Button type="Accept" id="btProxTela1" text="Próxima Tela" press="ProximaTela">
+						<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+					</Button>
+				</OverflowToolbar>
+			</f:footer>
+		</f:DynamicPage>
+		<f:DynamicPage id="Page2" showFooter="true" fitContent="true" visible="false">
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<Title text="Objetos Selecionados"/>
+					</f:heading>
+				</f:DynamicPageTitle>
+			</f:title>
+			<f:content>
+				<!--LISTA-->
+				<Table noDataText="Sem objetos para exibir"  mode="None" id="TabObjetos"
+					sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+					<columns>
+						<Column width="15%">
+							<header>
+								<Text text="Tipo Objeto" textAlign="Center" textDirection="RTL"/>
+							</header>
+						</Column>
+						<Column width="20%">
+							<header>
+								<Text text="Nome Objeto" textAlign="Center" textDirection="RTL"/>
+							</header>
+						</Column>
+						<Column width="15%">
+							<header>
+								<Text text="Pacote" textAlign="Center" textDirection="RTL"/>
+							</header>
+						</Column>
+						<Column width="10%">
+							<header>
+								<Text text="Data Criação" textAlign="Center" textDirection="RTL"/>
+							</header>
+						</Column>
+						<Column width="10%">
+							<header>
+								<Text text="Request" textAlign="Center" textDirection="RTL"/>
+							</header>
+						</Column>
+						<Column width="5%">
+							<header>
+								<Text text="" textAlign="Center" textDirection="RTL"/>
+							</header>
+						</Column>
+					</columns>
+					<!--<items>-->
+					<!--	<ColumnListItem id="favTableItemTemplate2" type="Active" selected="true">-->
+					<!--		<cells>-->
+					<!--                                 <Text text="{TIPOOBJ}" textAlign="Center" textDirection="RTL"/>-->
+					<!--                                 <Text text="{NOMEOBJ}" textAlign="Center" textDirection="RTL" id="NOMEOBJ2"/>-->
+					<!--                                 <Text text="{AMBIENTE}" textAlign="Center" textDirection="RTL" id="AMBIENTE2"/>-->
+					<!--                                 <Text text="{PACOTE}" textAlign="Center" textDirection="RTL"/>-->
+					<!--                                 <Text text="{DATACRIA}" textAlign="Center" textDirection="RTL" id="DATACRIA2"/>-->
+					<!--                                 <Text text="{REQUEST}" textAlign="Center" textDirection="RTL"/>-->
+					<!--		</cells>-->
+					<!--	</ColumnListItem>-->
+					<!--</items>-->
+				</Table>
+			</f:content>
+			<f:footer>
+				<OverflowToolbar id="otbFooter2">
+					<ToolbarSpacer/>
+					<Button id="AddMore" type="Emphasized" text="Adicionar Mais Objetos" press="addMaisObj" visible="false">
+						<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+					</Button>
+					<!--<Button type="Default" text="Voltar" press="TelaAnterior">-->
+					<!--	<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>-->
+					<!--</Button>-->
+					<Button type="Accept" id="btSolicita" text="Salvar Documento" press="Extracao">
+						<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+					</Button>
+				</OverflowToolbar>
+			</f:footer>
+		</f:DynamicPage>
+	</Page>
+</mvc:View>

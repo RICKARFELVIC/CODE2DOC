@@ -1,0 +1,200 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:u="sap.ui.unified" controllerName="yit.CODE2DOC.controller.CustomEmpresa" displayBlock="true">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page title="CODE2DOC - Personalizar Empresa - Customização" showNavButton="true" navButtonTooltip="Voltar" navButtonPress="Voltar" backgroundDesign="Solid">
+					<content>
+						<Wizard validationSuccess="FinalizaProc" id="WizCustomEmpresa" class="sapUiResponsivePadding--header sapUiResponsivePadding--content" complete="wizardCompletedHandler" stepActivate="false" showNextButton="false">
+							<WizardStep id="ListaDocs" title="Lista de Templates " validated="true">
+									<Table class="sapUiSizeCompact" mode="SingleSelectLeft" id="tabListaDoc" selectionChange="SelListaDoc"  inset="false" items="{ path: '/', sorter: { path: 'Name' } }">
+										<!--<headerToolbar>-->
+										<!--	<Toolbar>-->
+										<!--		<Title text="Lista de Documentos Atuais" level="H2"/>-->
+										<!--	</Toolbar>-->
+										<!--</headerToolbar>-->
+										<columns>
+											<Column minScreenWidth="Tablet" demandPopin="true">
+												<Text text="Nome da Empresa"/>
+											</Column>
+											<Column minScreenWidth="Tablet" demandPopin="true">
+												<Text text="Logo da Empresa"/>
+											</Column>
+											<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+												<Text text="Nome do Projeto"/>
+											</Column>
+											<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+												<Text text="Logo do Projeto"/>
+											</Column>
+											<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+												<Text text="Nome do Template"/>
+											</Column>
+											<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+												<Text text="Template"/>
+											</Column>
+											<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+												<Text text="Status"/>
+											</Column>
+										</columns>
+										<items>
+											<ColumnListItem type="Active" >
+												<cells>
+													<Text text="001"/>
+													<Text text="A0101"/>
+													<Text text="1000"/>
+													<Text text="A0101"/>
+													<Text text="1000"/>
+													<Text text="1000"/>
+												</cells>
+											</ColumnListItem>
+										</items>
+									</Table>
+									
+									<MessageStrip
+									text="Selecione um template na lista ou crie um novo template"
+									showIcon="true"
+									showCloseButton="true"
+									class="sapUiMediumMarginBottom">
+								</MessageStrip>
+							</WizardStep>
+							
+							
+							
+							
+							
+							<WizardStep id="wizDadosDoc" title="Dados do Template" validated="true">
+								<form:Form id="formDadosDoc" editable="false" width="100%">
+									<!--<form:title>-->
+									<!--	<core:Title text="Dados do Documento"/>-->
+									<!--</form:title>-->
+									<form:layout>
+										<form:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+									</form:layout>
+									<form:formContainers>
+										<form:FormContainer>
+											<form:formElements>
+												<form:FormElement label="Nome da Empresa">
+													<form:fields>
+														<VBox>
+															<Input id="txtNmEmp" type="Text" width="400px"/>
+														</VBox>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="Logo da Empresa">
+													<form:fields>
+														<VBox>
+															<u:FileUploader
+																id="uploadLogoEmp"
+																name="myFileUpload"
+																uploadUrl="upload/"
+																tooltip="Upload do Logo da Empresa"
+																uploadComplete="handleUploadComplete"
+																width="300px"/>
+															<Button
+																text="Carregar Logo"
+																press="handleUploadPress"/>
+														</VBox>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement>
+													<form:fields>
+														<VBox height="20px"></VBox>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="Nome do Projeto">
+													<form:fields>
+														<VBox>
+															<Input id="txtNmProj" type="Text" width="400px"/>
+														</VBox>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="Logo do Projeto">
+													<form:fields>
+														<VBox>
+															<u:FileUploader
+																id="uploadLogoProj"
+																name="myFileUpload"
+																uploadUrl="upload/"
+																tooltip="Upload do Logo do Projeto"
+																uploadComplete="handleUploadComplete"
+																width="300px"/>
+															<Button
+																text="Carregar Logo"
+																press="handleUploadPress"/>
+														</VBox>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement>
+													<form:fields>
+														<VBox height="20px"></VBox>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="Nome do Template">
+													<form:fields>
+														<VBox>
+															<Input id="txtNmTemp" type="Text" width="400px"/>
+														</VBox>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="Arquivo de Template">
+													<form:fields>
+														<VBox>
+															<u:FileUploader
+																id="uploadArqTemp"
+																name="myFileUpload"
+																uploadUrl="upload/"
+																tooltip="Upload do Arquivo de Template"
+																uploadComplete="handleUploadComplete"
+																width="300px"/>
+															<Button
+																text="Carregar Arquivo"
+																press="handleUploadPress"/>
+														</VBox>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="Ativo">
+													<form:fields>
+														<VBox>
+															<Switch state="true" customTextOn="Sim" customTextOff="Não">
+																<layoutData>
+																	<FlexItemData growFactor="1" />
+																</layoutData>
+															</Switch>
+														</VBox>
+													</form:fields>
+												</form:FormElement>
+												
+												
+												
+												
+												
+												
+											</form:formElements>
+										</form:FormContainer>
+									</form:formContainers>
+								</form:Form>
+							</WizardStep>
+
+							
+						</Wizard>
+
+					</content>
+				<footer>
+					<Bar>
+						<contentRight>
+							<Button id="btCriarNovo" type="Emphasized" text="Criar Novo Template" press="CreateNew">
+								<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+							</Button>
+							<Button type="Default" id="btVoltar" text="Voltar" press="VoltarIni" visible="false">
+								<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+							</Button>
+							<Button type="Default" id="btSalvar" text="Salvar" press="Salvar" visible="false">
+								<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+							</Button>
+						</contentRight>
+					</Bar>
+				</footer>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

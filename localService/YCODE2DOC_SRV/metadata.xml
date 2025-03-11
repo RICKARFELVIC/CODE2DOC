@@ -1,0 +1,230 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="YCODE2DOC_SRV" xml:lang="pt" sap:schema-version="1">
+            <EntityType Name="Subscription" sap:semantics="subscriptions" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="32" sap:label="Sub. ID" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="user" Type="Edm.String" MaxLength="12" m:FC_TargetPath="SyndicationAuthorName" m:FC_KeepInContent="false" sap:label="Nome do usuário" sap:creatable="false" sap:filterable="false"/>
+                <Property Name="updated" Type="Edm.DateTime" Precision="0" m:FC_TargetPath="SyndicationUpdated" m:FC_KeepInContent="false" sap:label="Registro hora" sap:creatable="false" sap:filterable="false"/>
+                <Property Name="title" Type="Edm.String" MaxLength="255" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="false" sap:label="Title" sap:filterable="false"/>
+                <Property Name="deliveryAddress" Type="Edm.String" sap:label="Delivery Address" sap:filterable="false"/>
+                <Property Name="persistNotifications" Type="Edm.Boolean" sap:label="Persist Notification" sap:filterable="false"/>
+                <Property Name="collection" Type="Edm.String" MaxLength="40" sap:label="Collection" sap:filterable="false"/>
+                <Property Name="filter" Type="Edm.String" sap:label="Filter" sap:filterable="false"/>
+                <Property Name="select" Type="Edm.String" MaxLength="255" sap:label="Select" sap:filterable="false"/>
+                <Property Name="changeType" Type="Edm.String" MaxLength="30" sap:label="Change Type"/>
+            </EntityType>
+            <EntityType Name="Notification" sap:semantics="notifications" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="32" sap:label="Notification ID"/>
+                <Property Name="collection" Type="Edm.String" MaxLength="40" sap:label="Collection"/>
+                <Property Name="title" Type="Edm.String" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="false" sap:label="Notif. Text"/>
+                <Property Name="updated" Type="Edm.DateTime" Precision="0" m:FC_TargetPath="SyndicationUpdated" m:FC_KeepInContent="false" sap:label="Registro hora"/>
+                <Property Name="changeType" Type="Edm.String" MaxLength="30" sap:label="Change Type"/>
+                <Property Name="entriesOfInterest" Type="Edm.Int32" sap:label="No. of Entries"/>
+                <Property Name="recipient" Type="Edm.String" MaxLength="112" sap:label="Recipient" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="EXTRACAO" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MANDT"/>
+                    <PropertyRef Name="HASH_CLI"/>
+                    <PropertyRef Name="COD_REQ"/>
+                    <PropertyRef Name="ID_DOC"/>
+                    <PropertyRef Name="VERSAO"/>
+                    <PropertyRef Name="TEMPLATE"/>
+                </Key>
+                <Property Name="MANDT" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="HASH_CLI" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="COD_REQ" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="ID_DOC" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="VERSAO" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="TEMPLATE" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="TITULO" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="PROJETO" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="PACOTE" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="REQUEST" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="OBJECT_PAI" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="OBJ_NAME_PAI" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TAG_SOLICITADA" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TAG_GERADA" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="DOC_GERADO" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="AGRUPAR" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="DT_CRIACAO" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="ULT_ATUALIZA" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TAG_GROUP" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TAG_KEY" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="ENTRY" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="JSONTIPOOBJ" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="JSONNOMEOBJ" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="JSONPACOTE" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="JSONDATACRIACAO" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="JSONREQUEST" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TYPE_MSG" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="MSG" Type="Edm.String" sap:unicode="false"/>
+            </EntityType>
+            <EntityType Name="DOCUMENTO" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MANDT"/>
+                    <PropertyRef Name="HASH_CLI"/>
+                    <PropertyRef Name="COD_REQ"/>
+                </Key>
+                <Property Name="MANDT" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="HASH_CLI" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="COD_REQ" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="OBJECT_PAI" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="OBJ_NAME_PAI" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TAG_GROUP" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TAG_KEY" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="ARQUIVO_FINAL" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="NM_ARQUIVO" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="VERSAO" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="DT_CRIACAO" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TYPE_MSG" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="MSG" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="BASE64" Type="Edm.String" sap:unicode="false"/>
+            </EntityType>
+            <EntityType Name="LISTA_PROGRAMAS" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PROGID"/>
+                    <PropertyRef Name="TIPOOBJ"/>
+                    <PropertyRef Name="NOMEOBJ"/>
+                    <PropertyRef Name="AMBIENTE"/>
+                    <PropertyRef Name="AUTOR"/>
+                    <PropertyRef Name="PACOTE"/>
+                    <PropertyRef Name="DATACRIA"/>
+                    <PropertyRef Name="REQUEST"/>
+                </Key>
+                <Property Name="PROGID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="PROGID"/>
+                <Property Name="TIPOOBJ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="TIPOOBJ"/>
+                <Property Name="NOMEOBJ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="NOMEOBJ"/>
+                <Property Name="AMBIENTE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="AMBIENTE"/>
+                <Property Name="AUTOR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="AUTOR"/>
+                <Property Name="PACOTE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="PACOTE"/>
+                <Property Name="DATACRIA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="DATACRIA"/>
+                <Property Name="REQUEST" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="REQUEST"/>
+                <Property Name="TYPE_MSG" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="MSG" Type="Edm.String" sap:unicode="false"/>
+            </EntityType>
+            <EntityType Name="GERADOR_TAGS" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MANDT"/>
+                    <PropertyRef Name="COD_REQ"/>
+                </Key>
+                <Property Name="MANDT" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="COD_REQ" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="HASH_CLI" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="OBJECT_PAI" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="OBJ_NAME_PAI" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TAG_SOLICITADA" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TAG_GERADA" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="DOC_GERADO" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="AGRUPAR" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="DT_CRIACAO" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="ULT_ATUALIZA" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TAG_GROUP" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TAG_KEY" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="ENTRY" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TIPO_OBJETO" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="NOME_OBJETO" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TYPE_MSG" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="MSG" Type="Edm.String" sap:unicode="false"/>
+            </EntityType>
+            <EntityType Name="LISTA_TEMPLATES" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MANDT"/>
+                    <PropertyRef Name="CLIENTE"/>
+                    <PropertyRef Name="NOME_EMPRESA"/>
+                    <PropertyRef Name="NOME_PROJETO"/>
+                    <PropertyRef Name="NOME_TEMPLATE"/>
+                </Key>
+                <Property Name="MANDT" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="CLIENTE" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="NOME_EMPRESA" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="NOME_PROJETO" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="NOME_TEMPLATE" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="LOGO_EMPRESA" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="LOGO_PROJETO" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="ARQUIVO_TEMPLATE" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="USER_ATUALIZA" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TAG_GERADA" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="DOC_GERADO" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="ULT_ATUALIZA" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="ATIVO" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TYPE_MSG" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="MSG" Type="Edm.String" sap:unicode="false"/>
+            </EntityType>
+            <EntityType Name="CHECK_USER" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MANDT"/>
+                    <PropertyRef Name="USERNAME"/>
+                </Key>
+                <Property Name="MANDT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:filterable="false"/>
+                <Property Name="USERNAME" Type="Edm.String" Nullable="false" sap:unicode="false" sap:filterable="false"/>
+                <Property Name="HASH_CLI" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TELA" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="MSG_ID" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="MSG_TXT" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TILE_CRIA_DOC" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TILE_ADD_OBJ" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TILE_CONS_DOC" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TILE_DADOS_PESS" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TILE_ACESSOS" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TILE_CUSTOMIZA" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TYPE_MSG" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="MSG" Type="Edm.String" sap:unicode="false"/>
+            </EntityType>
+            <EntityType Name="CRIA_DOC" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MANDT"/>
+                    <PropertyRef Name="CLIENTE"/>
+                    <PropertyRef Name="ID_DOC"/>
+                </Key>
+                <Property Name="MANDT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:filterable="false"/>
+                <Property Name="CLIENTE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:filterable="false"/>
+                <Property Name="ID_DOC" Type="Edm.String" Nullable="false" sap:unicode="false" sap:filterable="false"/>
+                <Property Name="TEMPLATE" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TITULO_ET" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="VERSAO" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="NOME_PROJETO" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="GERENTE" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="CRIADO_POR" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="REVISADO_POR" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="NOTA" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="INTRODUCAO" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="REQUISITO" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="DESC_SOLUCAO" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="MACRO_ARQ" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="IMG_MACRO_ARQ" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="DIAGRAMA" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="IMG_DIAGRAMA" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="DATA_CRIACAO" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="HORA_CRIACAO" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TYPE_MSG" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="MSG" Type="Edm.String" sap:unicode="false"/>
+            </EntityType>
+            <EntityContainer Name="YCODE2DOC_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="SubscriptionCollection" EntityType="YCODE2DOC_SRV.Subscription" sap:content-version="1"/>
+                <EntitySet Name="NotificationCollection" EntityType="YCODE2DOC_SRV.Notification" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="EXTRACAOSet" EntityType="YCODE2DOC_SRV.EXTRACAO" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="DOCUMENTOSet" EntityType="YCODE2DOC_SRV.DOCUMENTO" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="LISTA_PROGRAMASSet" EntityType="YCODE2DOC_SRV.LISTA_PROGRAMAS" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="GERADOR_TAGSSet" EntityType="YCODE2DOC_SRV.GERADOR_TAGS" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="LISTA_TEMPLATESSet" EntityType="YCODE2DOC_SRV.LISTA_TEMPLATES" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="CHECK_USERSet" EntityType="YCODE2DOC_SRV.CHECK_USER" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="CRIA_DOCSet" EntityType="YCODE2DOC_SRV.CRIA_DOC" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/YCODE2DOC_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/YCODE2DOC_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

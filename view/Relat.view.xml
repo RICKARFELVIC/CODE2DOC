@@ -1,0 +1,306 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.f" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:u="sap.ui.unified" controllerName="yit.CODE2DOC.controller.Relat" displayBlock="true" height="100%">
+	<core:InvisibleText text="InvisibleText" id="text1"/>
+	<Page xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" title="CODE2DOC - Relatórios" showNavButton="true" navButtonTooltip="Voltar" navButtonPress="Voltar" backgroundDesign="Solid" showFooter="false">
+
+		<f:DynamicPage id="dynamicPageId" headerExpanded="{/headerExpanded}" toggleHeaderOnTitleClick="{/titleClickable}" showFooter="true" fitContent="true" content="{/DOCUMENTOSet}">
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<Title text="Relatório - Consulta Documentos Extraídos"/>
+					</f:heading>
+				</f:DynamicPageTitle>
+			</f:title>
+			<!-- DynamicPage Header -->
+			<f:header>
+				<f:DynamicPageHeader pinnable="true" id="cont_map">
+					<f:content>
+						<fb:FilterBar xmlns:fb="sap.ui.comp.filterbar" clear="onClearFilters" reset="onReset" search="onSearch" showRestoreButton="true" showClearButton="true">
+							<fb:filterItems>
+								<!--Nome da Requisição-->
+								<fb:FilterItem name="NomeReq" label="Nome da Requisição" visibleInFilterBar="true">
+									<fb:control>
+										<Input value="" id="inpNomeReq"/>
+									</fb:control>
+								</fb:FilterItem>
+								<!--Documento-->
+								<fb:FilterItem name="Documento" label="Documento" visibleInFilterBar="true">
+									<fb:control>
+										<Input value="" id="inpDocumento"/>
+									</fb:control>
+								</fb:FilterItem>
+								<!--Projeto-->
+								<fb:FilterItem name="Programa" label="Projeto" visibleInFilterBar="true">
+									<fb:control>
+										<Input value="" id="inpProjeto"/>
+									</fb:control>
+								</fb:FilterItem>
+								<!--DtCriação-->
+								<fb:FilterItem name="DtCriação" label="Data de Criação" visibleInFilterBar="true">
+									<fb:control>
+										<Input value="" id="inpDtCriacao"/>
+									</fb:control>
+								</fb:FilterItem>
+							</fb:filterItems>
+						</fb:FilterBar>
+					</f:content>
+				</f:DynamicPageHeader>
+			</f:header>
+            <f:content>
+					<!--LISTA-->
+        <Table mode="SingleSelectLeft" noDataText="Sem objetos para exibir" id="tableGer" visible="false" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+							<columns>
+								<Column width="11rem">
+									<header>
+										<Text text="Nome da Requisição" textAlign="Center"/>
+									</header>
+								</Column>
+								<Column width="15rem">
+									<header>
+										<Text text="Documento" textAlign="Center"/>
+									</header>
+								</Column>
+								<Column width="6rem">
+									<header>
+										<Text text="Versão" textAlign="Center"/>
+									</header>
+								</Column>
+								<Column width="11rem">
+									<header>
+										<Text text="Projeto" textAlign="Center"/>
+									</header>
+								</Column>
+								<Column width="6rem">
+									<header>
+										<Text text="Template" textAlign="Center"/>
+									</header>
+								</Column>
+								<Column width="8rem">
+									<header>
+										<Text text="Data da Criação" textAlign="Center"/>
+									</header>
+								</Column>
+								<Column width="8rem">
+									<header>
+										<Text text="Status" textAlign="Center"/>
+									</header>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem type="Active" action:w5g.dt.context="/gerenciamentoSet" press="clicklista" selected="true" template="template">
+									<cells>
+										<Text text="{COD_REQ}" textAlign="Center" textDirection="RTL"/>
+                                        <Link text="{NM_ARQUIVO}"  href="#" textAlign="Center" press="onDownloadPress"/>
+                                        <Text text="{VERSAO}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJ_NAME_PAI}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJECT_PAI}" textAlign="Center" textDirection="RTL"/>
+                                        <Text text="{DT_CRIACAO}" textAlign="Center" textDirection="RTL"/>
+									</cells>
+								</ColumnListItem>
+								<ColumnListItem type="Active" action:w5g.dt.context="/gerenciamentoSet" press="clicklista" selected="true" template="template">
+									<cells>
+										<Text text="{COD_REQ}" textAlign="Center" textDirection="RTL"/>
+                                        <Link text="{NM_ARQUIVO}"  href="#" textAlign="Center" press="onDownloadPress"/>
+                                        <Text text="{VERSAO}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJ_NAME_PAI}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJECT_PAI}" textAlign="Center" textDirection="RTL"/>
+                                        <Text text="{DT_CRIACAO}" textAlign="Center" textDirection="RTL"/>
+									</cells>
+								</ColumnListItem>
+								<ColumnListItem type="Active" action:w5g.dt.context="/gerenciamentoSet" press="clicklista" selected="true" template="template">
+									<cells>
+										<Text text="{COD_REQ}" textAlign="Center" textDirection="RTL"/>
+                                        <Link text="{NM_ARQUIVO}"  href="#" textAlign="Center" press="onDownloadPress"/>
+                                        <Text text="{VERSAO}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJ_NAME_PAI}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJECT_PAI}" textAlign="Center" textDirection="RTL"/>
+                                        <Text text="{DT_CRIACAO}" textAlign="Center" textDirection="RTL"/>
+									</cells>
+								</ColumnListItem>
+								<ColumnListItem type="Active" action:w5g.dt.context="/gerenciamentoSet" press="clicklista" selected="true" template="template">
+									<cells>
+										<Text text="{COD_REQ}" textAlign="Center" textDirection="RTL"/>
+                                        <Link text="{NM_ARQUIVO}"  href="#" textAlign="Center" press="onDownloadPress"/>
+                                        <Text text="{VERSAO}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJ_NAME_PAI}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJECT_PAI}" textAlign="Center" textDirection="RTL"/>
+                                        <Text text="{DT_CRIACAO}" textAlign="Center" textDirection="RTL"/>
+									</cells>
+								</ColumnListItem>
+								<ColumnListItem type="Active" action:w5g.dt.context="/gerenciamentoSet" press="clicklista" selected="true" template="template">
+									<cells>
+										<Text text="{COD_REQ}" textAlign="Center" textDirection="RTL"/>
+                                        <Link text="{NM_ARQUIVO}"  href="#" textAlign="Center" press="onDownloadPress"/>
+                                        <Text text="{VERSAO}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJ_NAME_PAI}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJECT_PAI}" textAlign="Center" textDirection="RTL"/>
+                                        <Text text="{DT_CRIACAO}" textAlign="Center" textDirection="RTL"/>
+									</cells>
+								</ColumnListItem>
+								<ColumnListItem type="Active" action:w5g.dt.context="/gerenciamentoSet" press="clicklista" selected="true" template="template">
+									<cells>
+										<Text text="{COD_REQ}" textAlign="Center" textDirection="RTL"/>
+                                        <Link text="{NM_ARQUIVO}"  href="#" textAlign="Center" press="onDownloadPress"/>
+                                        <Text text="{VERSAO}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJ_NAME_PAI}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJECT_PAI}" textAlign="Center" textDirection="RTL"/>
+                                        <Text text="{DT_CRIACAO}" textAlign="Center" textDirection="RTL"/>
+									</cells>
+								</ColumnListItem>
+								<ColumnListItem type="Active" action:w5g.dt.context="/gerenciamentoSet" press="clicklista" selected="true" template="template">
+									<cells>
+										<Text text="{COD_REQ}" textAlign="Center" textDirection="RTL"/>
+                                        <Link text="{NM_ARQUIVO}"  href="#" textAlign="Center" press="onDownloadPress"/>
+                                        <Text text="{VERSAO}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJ_NAME_PAI}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJECT_PAI}" textAlign="Center" textDirection="RTL"/>
+                                        <Text text="{DT_CRIACAO}" textAlign="Center" textDirection="RTL"/>
+									</cells>
+								</ColumnListItem>
+								<ColumnListItem type="Active" action:w5g.dt.context="/gerenciamentoSet" press="clicklista" selected="true" template="template">
+									<cells>
+										<Text text="{COD_REQ}" textAlign="Center" textDirection="RTL"/>
+                                        <Link text="{NM_ARQUIVO}"  href="#" textAlign="Center" press="onDownloadPress"/>
+                                        <Text text="{VERSAO}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJ_NAME_PAI}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJECT_PAI}" textAlign="Center" textDirection="RTL"/>
+                                        <Text text="{DT_CRIACAO}" textAlign="Center" textDirection="RTL"/>
+									</cells>
+								</ColumnListItem>
+								<ColumnListItem type="Active" action:w5g.dt.context="/gerenciamentoSet" press="clicklista" selected="true" template="template">
+									<cells>
+										<Text text="{COD_REQ}" textAlign="Center" textDirection="RTL"/>
+                                        <Link text="{NM_ARQUIVO}"  href="#" textAlign="Center" press="onDownloadPress"/>
+                                        <Text text="{VERSAO}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJ_NAME_PAI}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJECT_PAI}" textAlign="Center" textDirection="RTL"/>
+                                        <Text text="{DT_CRIACAO}" textAlign="Center" textDirection="RTL"/>
+									</cells>
+								</ColumnListItem>
+								<ColumnListItem type="Active" action:w5g.dt.context="/gerenciamentoSet" press="clicklista" selected="true" template="template">
+									<cells>
+										<Text text="{COD_REQ}" textAlign="Center" textDirection="RTL"/>
+                                        <Link text="{NM_ARQUIVO}"  href="#" textAlign="Center" press="onDownloadPress"/>
+                                        <Text text="{VERSAO}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJ_NAME_PAI}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJECT_PAI}" textAlign="Center" textDirection="RTL"/>
+                                        <Text text="{DT_CRIACAO}" textAlign="Center" textDirection="RTL"/>
+									</cells>
+								</ColumnListItem>
+								<ColumnListItem type="Active" action:w5g.dt.context="/gerenciamentoSet" press="clicklista" selected="true" template="template">
+									<cells>
+										<Text text="{COD_REQ}" textAlign="Center" textDirection="RTL"/>
+                                        <Link text="{NM_ARQUIVO}"  href="#" textAlign="Center" press="onDownloadPress"/>
+                                        <Text text="{VERSAO}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJ_NAME_PAI}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJECT_PAI}" textAlign="Center" textDirection="RTL"/>
+                                        <Text text="{DT_CRIACAO}" textAlign="Center" textDirection="RTL"/>
+									</cells>
+								</ColumnListItem>
+								<ColumnListItem type="Active" action:w5g.dt.context="/gerenciamentoSet" press="clicklista" selected="true" template="template">
+									<cells>
+										<Text text="{COD_REQ}" textAlign="Center" textDirection="RTL"/>
+                                        <Link text="{NM_ARQUIVO}"  href="#" textAlign="Center" press="onDownloadPress"/>
+                                        <Text text="{VERSAO}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJ_NAME_PAI}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJECT_PAI}" textAlign="Center" textDirection="RTL"/>
+                                        <Text text="{DT_CRIACAO}" textAlign="Center" textDirection="RTL"/>
+									</cells>
+								</ColumnListItem>
+								<ColumnListItem type="Active" action:w5g.dt.context="/gerenciamentoSet" press="clicklista" selected="true" template="template">
+									<cells>
+										<Text text="{COD_REQ}" textAlign="Center" textDirection="RTL"/>
+                                        <Link text="{NM_ARQUIVO}"  href="#" textAlign="Center" press="onDownloadPress"/>
+                                        <Text text="{VERSAO}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJ_NAME_PAI}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJECT_PAI}" textAlign="Center" textDirection="RTL"/>
+                                        <Text text="{DT_CRIACAO}" textAlign="Center" textDirection="RTL"/>
+									</cells>
+								</ColumnListItem>
+								<ColumnListItem type="Active" action:w5g.dt.context="/gerenciamentoSet" press="clicklista" selected="true" template="template">
+									<cells>
+										<Text text="{COD_REQ}" textAlign="Center" textDirection="RTL"/>
+                                        <Link text="{NM_ARQUIVO}"  href="#" textAlign="Center" press="onDownloadPress"/>
+                                        <Text text="{VERSAO}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJ_NAME_PAI}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJECT_PAI}" textAlign="Center" textDirection="RTL"/>
+                                        <Text text="{DT_CRIACAO}" textAlign="Center" textDirection="RTL"/>
+									</cells>
+								</ColumnListItem>
+								<ColumnListItem type="Active" action:w5g.dt.context="/gerenciamentoSet" press="clicklista" selected="true" template="template">
+									<cells>
+										<Text text="{COD_REQ}" textAlign="Center" textDirection="RTL"/>
+                                        <Link text="{NM_ARQUIVO}"  href="#" textAlign="Center" press="onDownloadPress"/>
+                                        <Text text="{VERSAO}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJ_NAME_PAI}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJECT_PAI}" textAlign="Center" textDirection="RTL"/>
+                                        <Text text="{DT_CRIACAO}" textAlign="Center" textDirection="RTL"/>
+									</cells>
+								</ColumnListItem>
+								<ColumnListItem type="Active" action:w5g.dt.context="/gerenciamentoSet" press="clicklista" selected="true" template="template">
+									<cells>
+										<Text text="{COD_REQ}" textAlign="Center" textDirection="RTL"/>
+                                        <Link text="{NM_ARQUIVO}"  href="#" textAlign="Center" press="onDownloadPress"/>
+                                        <Text text="{VERSAO}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJ_NAME_PAI}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJECT_PAI}" textAlign="Center" textDirection="RTL"/>
+                                        <Text text="{DT_CRIACAO}" textAlign="Center" textDirection="RTL"/>
+									</cells>
+								</ColumnListItem>
+								<ColumnListItem type="Active" action:w5g.dt.context="/gerenciamentoSet" press="clicklista" selected="true" template="template">
+									<cells>
+										<Text text="{COD_REQ}" textAlign="Center" textDirection="RTL"/>
+                                        <Link text="{NM_ARQUIVO}"  href="#" textAlign="Center" press="onDownloadPress"/>
+                                        <Text text="{VERSAO}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJ_NAME_PAI}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJECT_PAI}" textAlign="Center" textDirection="RTL"/>
+                                        <Text text="{DT_CRIACAO}" textAlign="Center" textDirection="RTL"/>
+									</cells>
+								</ColumnListItem>
+								<ColumnListItem type="Active" action:w5g.dt.context="/gerenciamentoSet" press="clicklista" selected="true" template="template">
+									<cells>
+										<Text text="{COD_REQ}" textAlign="Center" textDirection="RTL"/>
+                                        <Link text="{NM_ARQUIVO}"  href="#" textAlign="Center" press="onDownloadPress"/>
+                                        <Text text="{VERSAO}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJ_NAME_PAI}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJECT_PAI}" textAlign="Center" textDirection="RTL"/>
+                                        <Text text="{DT_CRIACAO}" textAlign="Center" textDirection="RTL"/>
+									</cells>
+								</ColumnListItem>
+								<ColumnListItem type="Active" action:w5g.dt.context="/gerenciamentoSet" press="clicklista" selected="true" template="template">
+									<cells>
+										<Text text="{COD_REQ}" textAlign="Center" textDirection="RTL"/>
+                                        <Link text="{NM_ARQUIVO}"  href="#" textAlign="Center" press="onDownloadPress"/>
+                                        <Text text="{VERSAO}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJ_NAME_PAI}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJECT_PAI}" textAlign="Center" textDirection="RTL"/>
+                                        <Text text="{DT_CRIACAO}" textAlign="Center" textDirection="RTL"/>
+									</cells>
+								</ColumnListItem>
+								<ColumnListItem type="Active" action:w5g.dt.context="/gerenciamentoSet" press="clicklista" selected="true" template="template">
+									<cells>
+										<Text text="{COD_REQ}" textAlign="Center" textDirection="RTL"/>
+                                        <Link text="{NM_ARQUIVO}"  href="#" textAlign="Center" press="onDownloadPress"/>
+                                        <Text text="{VERSAO}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJ_NAME_PAI}" textAlign="Center" textDirection="RTL"/>
+										<Text text="{OBJECT_PAI}" textAlign="Center" textDirection="RTL"/>
+                                        <Text text="{DT_CRIACAO}" textAlign="Center" textDirection="RTL"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+            </f:content>
+            
+		<f:footer>
+			<OverflowToolbar id="otbFooter">
+				<ToolbarSpacer/>
+				<!--<Button id="btBaixa" type="Emphasized" text="Baixar arquivo" press="onDownloadPress">-->
+				<!--	<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>-->
+				<!--</Button>-->
+				<Button id="btExclui" type="Reject" text="Excluir" press="Exclui">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+				</Button>
+			</OverflowToolbar>
+		</f:footer>
+		</f:DynamicPage>
+	</Page>
+</mvc:View>

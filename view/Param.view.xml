@@ -1,0 +1,122 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
+ xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:u="sap.ui.unified"
+  controllerName="yit.CODE2DOC.controller.Param" displayBlock="true"
+	xmlns:smartField="sap.ui.comp.smartfield">
+	<Shell id="shell">
+		<App id="app">
+			<pages><Page title="CODE2DOC - Extração de Documentos" showNavButton="true" navButtonTooltip="Voltar" navButtonPress="Voltar" backgroundDesign="Solid">
+       		
+               <content>
+               
+               
+<form:Form id="FormObjetos" editable="false" width="100%">
+        <form:title>
+            <core:Title text="Objetos para Download"/>
+			</form:title>
+			<form:layout>
+				<form:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+			</form:layout>
+		</form:Form>
+        
+<!--TABELAS E ESTRUTURAS-->            
+<HBox alignItems="Center"> 
+    <RadioButton groupName="Itens" width="150px" text="Ambiente:" selected="false" />
+    <Text text=" " width="10px" /> 
+    <Input value="" xmlns="sap.m" id="tab1" width="150px" busyIndicatorSize="Small" change="fnNumSlide('1')" />
+    <Text text=" " width="10px" /> 
+    <Text text="até"  />
+    <Text text=" " width="10px" /> 
+    <Input value="" xmlns="sap.m" id="tab2" width="150px" busyIndicatorSize="Small" change="fnNumSlide('1')" />
+</HBox>
+
+<!--CLASSE DE MSG-->            
+<HBox alignItems="Center"> 
+    <RadioButton groupName="Itens" width="150px"  text="Projeto:" selected="false" />
+    <Text text=" " width="10px" /> 
+    <Input value="" xmlns="sap.m" id="clasmsg1" width="150px" busyIndicatorSize="Small" change="fnNumSlide('1')" />
+    <Text text=" " width="10px" /> 
+    <Text text="até"  />
+    <Text text=" " width="10px" /> 
+    <Input value="" xmlns="sap.m" id="clasmsg2" width="150px" busyIndicatorSize="Small" change="fnNumSlide('1')" />
+</HBox>
+
+<!--MOD FUNCAO-->            
+<HBox alignItems="Center"> 
+    <RadioButton groupName="Itens" width="150px"  text="Pacote:" selected="false" />
+    <Text text=" " width="10px" /> 
+    <Input value="" xmlns="sap.m" id="modfun1" width="150px" busyIndicatorSize="Small" change="fnNumSlide('1')" />
+    <Text text=" " width="10px" /> 
+    <Text text="até"  />
+    <Text text=" " width="10px" /> 
+    <Input value="" xmlns="sap.m" id="modfun2" width="150px" busyIndicatorSize="Small" change="fnNumSlide('1')" />
+</HBox>
+
+<!--GRP FUNCAO-->            
+<HBox alignItems="Center"> 
+    <RadioButton groupName="Itens" width="150px"  text="Request:" selected="false" />
+    <Text text=" " width="10px" /> 
+    <Input value="" xmlns="sap.m" id="grpfun1" width="150px" busyIndicatorSize="Small" change="fnNumSlide('1')" />
+    <Text text=" " width="10px" /> 
+    <Text text="até"  />
+    <Text text=" " width="10px" /> 
+    <Input value="" xmlns="sap.m" id="grpfun2" width="150px" busyIndicatorSize="Small" change="fnNumSlide('1')" />
+</HBox>
+
+<!--CLASSES-->               
+<HBox alignItems="Center"> 
+    <RadioButton groupName="Itens" width="150px"  text="Grupos Z:" selected="false" />
+    <Text text=" " width="10px" /> 
+    <Input value="" xmlns="sap.m" id="classe1" width="150px" busyIndicatorSize="Small" change="fnNumSlide('1')" />
+    <Text text=" " width="10px" /> 
+    <Text text="até"  />
+    <Text text=" " width="10px" /> 
+    <Input value="" xmlns="sap.m" id="classe2" width="150px" busyIndicatorSize="Small" change="fnNumSlide('1')" />
+</HBox>
+
+<!--PROGRAMA-->               
+<HBox alignItems="Center"> 
+    <RadioButton groupName="Itens" width="150px"  text="Programa Z:" selected="false" />
+    <Text text=" " width="10px" /> 
+    <Input value="" xmlns="sap.m" id="prog1" width="150px" busyIndicatorSize="Small" change="fnNumSlide('1')" />
+    <Text text=" " width="10px" /> 
+    <Text text="até"  />
+    <Text text=" " width="10px" /> 
+    <Input value="" xmlns="sap.m" id="prog2" width="150px" busyIndicatorSize="Small" change="fnNumSlide('1')" />
+</HBox>
+
+<!--SPACE-->               
+<HBox alignItems="Center"> 
+    <Text text=" " width="10px" /> 
+</HBox>
+
+<!--IDIOMA-->               
+<HBox alignItems="Center"> 
+    <Text text=" " width="50px" /> 
+    <Text text="Nome da Requisição:" width="158px" /> 
+    <Input value="" xmlns="sap.m" id="txtNomeReq" width="341px" busyIndicatorSize="Small" change="fnNumSlide('1')" />
+</HBox>
+
+
+<!--SPACE-->               
+<HBox alignItems="Center"> 
+    <Text text=" " width="10px" /> 
+</HBox>
+
+			</content>
+
+		<footer>
+			<OverflowToolbar id="otbFooter">
+				<ToolbarSpacer/>
+				<Button type="Accept" text="Extrair" press="Salvar">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+				</Button>
+				<Button type="Reject" text="Cancelar">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+				</Button>
+			</OverflowToolbar>
+		</footer>
+			</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

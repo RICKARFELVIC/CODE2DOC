@@ -1,0 +1,143 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:u="sap.ui.unified" controllerName="yit.CODE2DOC.controller.DadosPessoais" displayBlock="true">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page title="CODE2DOC - Personalisar Perfil - Dados Pessoais" showNavButton="true" navButtonTooltip="Voltar" navButtonPress="Voltar" backgroundDesign="Solid">
+					<content>
+						<Wizard validationSuccess="FinalizaProc" id="WizDadosPessoais" class="sapUiResponsivePadding--header sapUiResponsivePadding--content" complete="wizardCompletedHandler" stepActivate="false" showNextButton="false">
+						
+							<WizardStep id="wizDadosPessoais" title="Dados Pessoais" validated="true">
+								<form:Form id="formDadosPessoais" editable="false" width="100%">
+									<!--<form:title>-->
+									<!--	<core:Title text="Dados do Documento"/>-->
+									<!--</form:title>-->
+									<form:layout>
+										<form:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+									</form:layout>
+									<form:formContainers>
+										<form:FormContainer>
+											<form:formElements>
+												<form:FormElement label="Nome">
+													<form:fields>
+														<VBox>
+															<Input id="txtNome" type="Text" width="400px"/>
+														</VBox>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="Sobrenome">
+													<form:fields>
+														<VBox>
+															<Input id="txtSobrenome" type="Text" width="400px"/>
+														</VBox>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="Nome exibido na documentação">
+													<form:fields>
+														<VBox>
+															<Input id="txtNmCompleto" type="Text" width="400px" editable="false" value=""/>
+														</VBox>
+													</form:fields>
+												</form:FormElement>
+											
+												<form:FormElement label="Função no CODE2DOC">
+													<form:fields>
+														<VBox>
+															<CheckBox id="__box1" text="Criação de Documento" editable="false"/>
+															<CheckBox id="__box2" text="Seleção de Objetos" editable="false"/>
+															<CheckBox id="__box3" text="Consulta Documentos" editable="false"/>
+															<CheckBox id="__box4" text="Personalizar Perfil" editable="false"/>
+															<CheckBox id="__box5" text="Gestão de Usuários" editable="false"/>
+															<CheckBox id="__box6" text="Personalizar Empresa" editable="false"/>
+														</VBox>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="Departamento">
+													<form:fields>
+														<VBox>
+															<Input id="txtDepartamento" type="Text" width="400px"/>
+														</VBox>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="Celular">
+													<form:fields>
+														<VBox>
+															<Input id="txtCelular" type="Text" width="400px"/>
+														</VBox>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="E-mail">
+													<form:fields>
+														<VBox>
+															<Input id="txtEmail" type="Text" width="400px"/>
+														</VBox>
+													</form:fields>
+												</form:FormElement>
+											</form:formElements>
+										</form:FormContainer>
+									</form:formContainers>
+								</form:Form>
+							</WizardStep>
+							
+							<WizardStep id="wizDadosAcesso" title="Dados de Acesso" validated="true" activate="prodAcabActivate" complete="prodAcabComplete">
+							
+								<form:Form id="FormEscopo" editable="false" width="100%">
+									<!--<form:title>-->
+									<!--	<core:Title text="Dados do Documento"/>-->
+									<!--</form:title>-->
+									<form:layout>
+										<form:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+									</form:layout>
+									<form:formContainers>
+										<form:FormContainer>
+											<form:formElements>
+												<form:FormElement label="Usuário">
+													<form:fields>
+														<VBox>
+															<Input id="txtUser" type="Text" width="400px" editable="false"/>
+														</VBox>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="Nova senha">
+													<form:fields>
+														<VBox>
+															<Input id="txtNovaSenha" type="Password" width="400px"/>
+														</VBox>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="Repetição da senha">
+													<form:fields>
+														<VBox>
+															<Input id="txtRepSenha" type="Password" width="400px" required="true" value=""/>
+														</VBox>
+													</form:fields>
+												</form:FormElement>
+											</form:formElements>
+										</form:FormContainer>
+									</form:formContainers>
+								</form:Form>
+							</WizardStep>
+
+							
+						</Wizard>
+
+					</content>
+				<footer>
+					<Bar>
+						<contentRight>
+							<Button id="btDados" type="Default" text="Ir para Dados de Acesso" press="DadosAcesso">
+								<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+							</Button>
+							<Button type="Default" id="btVoltar" text="Voltar" press="VoltarDadosPess" visible="false">
+								<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+							</Button>
+							<Button type="Accept" id="btSalvar" text="Salvar" press="Salvar" visible="true">
+								<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+							</Button>
+						</contentRight>
+					</Bar>
+				</footer>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

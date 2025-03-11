@@ -1,0 +1,77 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="yit.CODE2DOC.controller.Home" displayBlock="true">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+					<Page title="CODE2DOC">
+			<content>
+				
+	<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Criação de Documento" subheader="Novo Documento" id="tile_criadoc" press="Go_CriaDoc">
+		<TileContent>
+		<content>
+		    <sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://create" size="3em" id="iconcriadoc" activeColor="orange" hoverColor="orange"/>
+		</content>
+		</TileContent>
+	</GenericTile>
+	
+	<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Seleção de Objetos" subheader="Adicionar Objetos SAP" id="tile_addobj" press="Go_Extracao">
+		<TileContent>
+		<content>
+		    <sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://multi-select" size="3em" id="iconextrac" activeColor="orange" hoverColor="orange"/>
+		</content>
+		</TileContent>
+	</GenericTile>
+				
+	<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Consulta Documentos" subheader="Status e  Versões" id="tile_consdoc" press="Go_Consulta">
+		<TileContent>
+		<content>
+		    <sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://vds-file" size="3em" id="iconconsdoc" activeColor="orange" hoverColor="orange"/>
+		</content>
+		</TileContent>
+	</GenericTile>
+				
+	<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Personalizar perfil" subheader="Dados Pessoais" id="tile_pess" press="Go_DadosPessoais">
+		<TileContent>
+		<content>
+		    <sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://user-settings" size="3em" id="iconpess" activeColor="orange" hoverColor="orange"/>
+		</content>
+		</TileContent>
+	</GenericTile>
+				
+	<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Gestão de Usuários" subheader="Acessos" id="tile_acessos" press="Go_GestaoAcessos">
+		<TileContent>
+		<content>
+		    <sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://company-view" size="3em" id="icongestacess" activeColor="orange" hoverColor="orange"/>
+		</content>
+		</TileContent>
+	</GenericTile>
+				
+	<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Personalizar Empresa" subheader="Customização" id="tile_custom" press="Go_CustomEmpresa">
+		<TileContent>
+		<content>
+		    <sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://settings" size="3em" id="iconcustom" activeColor="orange" hoverColor="orange"/>
+		</content>
+		</TileContent>
+	</GenericTile>
+
+	<!--<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Requisição Documentos" subheader="Gerador de Tags" id="tile_req" press="Go_Custom">-->
+	<!--	<TileContent>-->
+	<!--	<content>-->
+	<!--	    <sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://developer-settings" size="3em" id="iconreq" activeColor="orange" hoverColor="orange"/>-->
+	<!--	</content>-->
+	<!--	</TileContent>-->
+	<!--</GenericTile>-->
+
+	<!--<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Relatórios" subheader="Documentos Extraídos" id="tile_rel" press="Go_Relat">-->
+	<!--	<TileContent>-->
+	<!--	<content>-->
+	<!--	    <sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://vds-file" size="3em" id="iconrel" activeColor="orange" hoverColor="orange"/>-->
+	<!--	</content>-->
+	<!--	</TileContent>-->
+	<!--</GenericTile>-->
+          
+			</content>
+			</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

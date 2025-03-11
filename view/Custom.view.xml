@@ -1,0 +1,124 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.f" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:u="sap.ui.unified" controllerName="yit.CODE2DOC.controller.Custom" displayBlock="true" height="100%">
+	<core:InvisibleText text="InvisibleText" id="text1"/>
+	<Page xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" 
+    title="CODE2DOC - Consulta de Documentos - Status e Versões" showNavButton="true" navButtonTooltip="Voltar" 
+    navButtonPress="Voltar" backgroundDesign="Solid" showFooter="false" enableScrolling="false" >
+
+		<f:DynamicPage id="dynamicPageId" showFooter="true" 
+				fitContent="true">
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<Title text="Lista de Documentos Gerados"/>
+					</f:heading>
+				</f:DynamicPageTitle>
+			</f:title>
+			<!-- DynamicPage Header -->
+			<f:header>
+				<f:DynamicPageHeader pinnable="false" id="cont_map">
+					
+						<fb:FilterBar xmlns:fb="sap.ui.comp.filterbar" clear="onClearFilters" reset="onReset" search="onSearch" showRestoreButton="true" showClearButton="true">
+							<fb:filterItems>
+								<!--Status-->
+								<fb:FilterItem name="Sel" label="Status da Requisição" visibleInFilterBar="true">
+									<fb:control>
+                                    	<Select id="filStatus">
+                                            <core:Item text="Todos" key="TODOS"></core:Item>
+                                            <core:Item text="Pendente" key="PEND"></core:Item>
+                                            <core:Item text="Gerando TAG" key="PROCTAG"></core:Item>
+                                            <core:Item text="Gerando DOC" key="PROCDOC"></core:Item>
+                                            <core:Item text="Documento Gerado" key="FIN"></core:Item>
+                                        </Select>
+									</fb:control>
+								</fb:FilterItem>
+								<!--Nome da Requisição-->
+								<fb:FilterItem name="NMReq" label="Nome da Requisição" visibleInFilterBar="true">
+									<fb:control>
+								        <Input xmlns="sap.m" id="filNome"/>
+									</fb:control>
+								</fb:FilterItem>
+								<!--Data da Requisição-->
+								<fb:FilterItem name="DTReq" label="Data da Requisição" visibleInFilterBar="true">
+									<fb:control>
+										<DateRangeSelection id="filData" delimiter="-" displayFormat="dd/MM/yyyy" change="handleChange"/>
+									</fb:control>
+								</fb:FilterItem>
+							</fb:filterItems>
+						</fb:FilterBar>
+				</f:DynamicPageHeader>
+			</f:header>
+            <f:content>
+					<!--LISTA-->
+        <Table mode="SingleSelectLeft" fixedRowCount="4" growing="true" growingScrollToLoad="true" 
+				visibleRowCount="5" noDataText="Sem objetos para exibir" id="tableGer" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders"  items="{/GERADOR_TAGSSet}">
+							<columns>
+								<Column id="" width='20px'>
+									<header>
+										<Text text="" textAlign="Center"/>
+									</header>
+								</Column>
+								<Column id="Status">
+									<header>
+										<Text text="Status" textAlign="Center"/>
+									</header>
+								</Column>
+								<Column id="NmReq">
+									<header>
+										<Text text="Nome da Requisição" textAlign="Center"/>
+									</header>
+								</Column>
+								<Column>
+									<header>
+										<Text text="Data Criação" textAlign="Center"/>
+									</header>
+								</Column>
+								<Column>
+									<header>
+										<Text text="Data Últ. Modificação" textAlign="Center"/>
+									</header>
+								</Column>
+								<Column>
+									<header>
+										<Text text="Tipo de Objeto" textAlign="Center"/>
+									</header>
+								</Column>
+								<Column>
+									<header>
+										<Text text="Objeto" textAlign="Center"/>
+									</header>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem type="Active" action:w5g.dt.context="/GERADOR_TAGSSet"  selected="true" id="favTableItemTemplate">
+									<cells>
+								        <ObjectStatus class="sapUiSmallMarginBottom" text="Finalizado" icon="sap-icon://accept" state="Success" />
+                                        <Text text="{COD_REQ}" textAlign="Center" textDirection="RTL"/>
+                                        <Text text="{DT_CRIACAO}" textAlign="Center" textDirection="RTL" id="txtDt_Criacao"/>
+                                        <Text text="{ULT_ATUALIZA}" textAlign="Center" textDirection="RTL" id="txtUlt_Atualiza"/>
+                                        <Text text="{AGRUPAR}" textAlign="Center" textDirection="RTL" id="txtAgrupar"/>
+                                        <Text text="{TIPO_OBJETO}" textAlign="Center" textDirection="RTL" id="txtTpObj"/>
+                                        <Text text="{NOME_OBJETO}" textAlign="Center" textDirection="RTL" id="txtNmObj"/>
+                                        <Text text="{ENTRY}" textAlign="Center" textDirection="RTL" id="txtEntry"/>
+                                        <Link text="Listar Programas" textAlign="Center" textDirection="RTL" press="listaPGM('{ENTRY}')"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+            </f:content>
+    
+		<f:footer>
+			<OverflowToolbar id="otbFooter">
+				<ToolbarSpacer/>
+				<Button type="Accept" text="Executar Solicitações" press="Executa" id="btExecuta" visible="false">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+				</Button>
+				<Button type="Reject" text="Excluir" press="Exclui" id="btExclui" visible="false">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+				</Button>
+			</OverflowToolbar>
+		</f:footer>
+		</f:DynamicPage>
+            
+	
+	</Page>
+</mvc:View>

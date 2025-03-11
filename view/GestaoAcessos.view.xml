@@ -1,0 +1,177 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:u="sap.ui.unified" controllerName="yit.CODE2DOC.controller.GestaoAcessos" displayBlock="true">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page title="CODE2DOC - Gestão de Usuários - Acessos" showNavButton="true" navButtonTooltip="Voltar" navButtonPress="Voltar" backgroundDesign="Solid">
+					<content>
+						<Wizard validationSuccess="FinalizaProc" id="WizGestaoAcessos" class="sapUiResponsivePadding--header sapUiResponsivePadding--content" complete="wizardCompletedHandler" stepActivate="false" showNextButton="false">
+							<WizardStep id="ListaUsuarios" title="Lista de Usuários" validated="true">
+									<Table class="sapUiSizeCompact" mode="SingleSelectLeft" id="tabListaUsuarios" selectionChange="SelListaUsuarios"  inset="false" items="{ path: '/', sorter: { path: 'Name' } }">
+										<headerToolbar>
+											<!--<Toolbar>-->
+											<!--	<Title text="Lista de Documentos Atuais" level="H2"/>-->
+											<!--</Toolbar>-->
+										</headerToolbar>
+										<columns>
+											<Column minScreenWidth="Tablet" demandPopin="true">
+												<Text text="Usuário"/>
+											</Column>
+											<Column minScreenWidth="Tablet" demandPopin="true">
+												<Text text="Nome"/>
+											</Column>
+											<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+												<Text text="Criação de Documento"/>
+											</Column>
+											<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+												<Text text="Seleção de Objetos"/>
+											</Column>
+											<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+												<Text text="Consulta Documentos"/>
+											</Column>
+											<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+												<Text text="Personalizar Perfil"/>
+											</Column>
+											<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+												<Text text="Gestão de Usuários"/>
+											</Column>
+											<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+												<Text text="Personalizar Empresa"/>
+											</Column>
+											<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+												<Text text="Status"/>
+											</Column>
+										</columns>
+										<items>
+											<ColumnListItem type="Active" >
+												<cells>
+													<Text text="001"/>
+													<Text text="A0101"/>
+													<Text text="1000"/>
+													<Text text="A0101"/>
+													<Text text="1000"/>
+												</cells>
+											</ColumnListItem>
+										</items>
+									</Table>
+									
+									<MessageStrip
+									text="Selecione um usuário na lista ou crie um novo abaixo."
+									showIcon="true"
+									showCloseButton="true"
+									class="sapUiMediumMarginBottom">
+								</MessageStrip>
+							</WizardStep>
+							
+							
+							
+							
+							
+							<WizardStep id="wizDadosUsu" title="Dados do Usuário" validated="true">
+								<form:Form id="formDadosUsu" editable="false" width="100%">
+									<!--<form:title>-->
+									<!--	<core:Title text="Dados do Documento"/>-->
+									<!--</form:title>-->
+									<form:layout>
+										<form:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+									</form:layout>
+									<form:formContainers>
+										<form:FormContainer>
+											<form:formElements>
+												<form:FormElement label="Nome">
+													<form:fields>
+														<VBox>
+															<Input id="txtNome" type="Text" width="400px"/>
+														</VBox>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="Sobrenome">
+													<form:fields>
+														<VBox>
+															<Input id="txtSobrenome" type="Text" width="400px"/>
+														</VBox>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="Nome exibido na documentação">
+													<form:fields>
+														<VBox>
+															<Input id="txtNmCompleto" type="Text" width="400px" editable="false" value=""/>
+														</VBox>
+													</form:fields>
+												</form:FormElement>
+											
+												<form:FormElement label="Função no CODE2DOC">
+													<form:fields>
+														<VBox>
+															<CheckBox id="__box1" text="Criação de Documento" editable="false"/>
+															<CheckBox id="__box2" text="Seleção de Objetos" editable="false"/>
+															<CheckBox id="__box3" text="Consulta Documentos" editable="false"/>
+															<CheckBox id="__box4" text="Personalizar Perfil" editable="false"/>
+															<CheckBox id="__box5" text="Gestão de Usuários" editable="false"/>
+															<CheckBox id="__box6" text="Personalizar Empresa" editable="false"/>
+														</VBox>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="Departamento">
+													<form:fields>
+														<VBox>
+															<Input id="txtDepartamento" type="Text" width="400px"/>
+														</VBox>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="Celular">
+													<form:fields>
+														<VBox>
+															<Input id="txtCelular" type="Text" width="400px"/>
+														</VBox>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="E-mail">
+													<form:fields>
+														<VBox>
+															<Input id="txtEmail" type="Text" width="400px"/>
+														</VBox>
+													</form:fields>
+												</form:FormElement>
+											</form:formElements>
+										</form:FormContainer>
+									</form:formContainers>
+								</form:Form>
+							</WizardStep>
+							
+
+							
+						</Wizard>
+
+					</content>
+				<footer>
+					<Bar>
+						<contentRight>
+							<Button type="Up" id="btVoltar" text="Voltar" press="VoltarLista" visible="false">
+								<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+							</Button>
+							<Button id="btCriarNovo" type="Emphasized" text="Criar Novo Usuário" press="CreateNew">
+								<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+							</Button>
+							<Button id="btEditar" type="Default" text="Editar Permissões" press="EditPerm" visible="false">
+								<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+							</Button>
+							<Button type="Default" id="btBloquear" text="Bloquear Usuário" press="Bloquear" visible="false">
+								<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+							</Button>
+							<Button type="Default" id="btDesbloquear" text="Desbloquear Usuário" press="Desbloquear" visible="false">
+								<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+							</Button>
+							<Button type="Default" id="btRedefinir" text="Redefinir Senha" press="Redefinir" visible="false">
+								<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+							</Button>
+							<Button type="Accept" id="btSalvar" text="Salvar" press="Salvar" visible="false">
+								<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+							</Button>
+						</contentRight>
+					</Bar>
+				</footer>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
