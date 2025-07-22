@@ -1,9 +1,9 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" 
 xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:u="sap.ui.unified" 
-controllerName="yit.CODE2DOC.controller.Tcode" displayBlock="true">
+controllerName="yit.EXPERTDOCS.controller.Tcode" displayBlock="true">
 	<Shell id="shell">
 		<App id="app">
-			<pages><Page title="Doc Dev - Documentador de Desenvolvimentos" showNavButton="true" navButtonTooltip="Voltar" navButtonPress="Voltar" backgroundDesign="Solid">
+			<pages><Page title="EXPERTDOCS" showNavButton="true" navButtonTooltip="Voltar" navButtonPress="Voltar" backgroundDesign="Solid">
        		
                <content>
                

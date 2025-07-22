@@ -27,14 +27,14 @@ sap.ui.define([
 		Text, TextArea, CheckBox, Input, MessageBox, JSONModel) {
 		"use strict";
 
-		return Controller.extend("yit.CODE2DOC.controller.DadosPessoais", {
+		return Controller.extend("yit.EXPERTDOCS.controller.DadosPessoais", {
 
 			onInit: function() {
 				// this.byId("Page2").setVisible(false);
 				// this.byId("Page1").setVisible(true);
 				//that = this;
 				// Create Model Instance of the oData service
-				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YCODE2DOC_SRV");
+				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YEXPERTDOCS_SRV");
 				sap.ui.getCore().setModel(oModel, "myModel");
 				this.i_de = 0;
 				this.i_para = 0;
@@ -102,14 +102,7 @@ sap.ui.define([
 				var Celular = this.byId("txtCelular").getValue();
 				var Usuario = this.byId("txtUser").getValue();
 				var Senha = this.byId("txtNovaSenha").getValue();
-				
-				// that.getView().byId("txtNome").setValue(oData.results[0].NOME);
-				// that.getView().byId("txtSobrenome").setValue(oData.results[0].SOBRENOME);
-				// that.getView().byId("txtNmCompleto").setValue(oData.results[0].NOME_EXIB);
-				// that.getView().byId("txtDepartamento").setValue(oData.results[0].DEPARTAMENTO);
-				// that.getView().byId("txtCelular").setValue(oData.results[0].CELULAR);
-				// that.getView().byId("txtEmail").setValue(oData.results[0].EMAIL);
-				// that.getView().byId("txtUser").setValue(oData.results[0].USUARIO);
+				var SenhaAtual = this.byId("txtSenhaAtual").getValue();
 				
 				/////////////////////////////////////  INPUTS  //////////////////////////////////////////////////
 				// NOME DA REQUISIÇÃO
@@ -200,10 +193,9 @@ sap.ui.define([
 					value1: txt_field8
 				});
 
-				//JSONREQUEST
 				var txt_field9 = Senha;
 				var field9 = new sap.ui.model.Filter({
-					path: "PASS",
+					path: "NEW_PASS",
 					// caso seja equal
 					operator: sap.ui.model.FilterOperator.EQ,
 					// caso seja texto
@@ -211,10 +203,20 @@ sap.ui.define([
 					value1: txt_field9
 				});
 
+				var txt_field10 = SenhaAtual;
+				var field10 = new sap.ui.model.Filter({
+					path: "OLD_PASS",
+					// caso seja equal
+					operator: sap.ui.model.FilterOperator.EQ,
+					// caso seja texto
+					// operator: sap.ui.model.FilterOperator.Contains,
+					value1: txt_field10
+				});
+
 				var that = this;
-				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YCODE2DOC_SRV");
+				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YEXPERTDOCS_SRV");
 				oModel.read("/DADOS_PESSSet", {
-					filters: [field1, field2, field3, field4, field5, field6, field7, field8, field9],
+					filters: [field1, field2, field3, field4, field5, field6, field7, field8, field9, field10],
 					success: function(oData, oResponse) {
 						//debugger;
 						var userdata = new sap.ui.model.json.JSONModel({
@@ -246,7 +248,7 @@ sap.ui.define([
 				oGlobalBusyDialog.open();
 			
 				var that = this;
-				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YCODE2DOC_SRV");
+				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YEXPERTDOCS_SRV");
 				oModel.read("/DADOS_PESSSet", {
 					// filters: [filter1, filter2, filter3, filter4, filter5, filter6, filter7, filter8],
 					success: function(oData, oResponse) {

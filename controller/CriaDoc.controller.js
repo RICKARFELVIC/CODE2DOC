@@ -24,10 +24,10 @@ sap.ui.define([
 	 * @param {typeof sap.ui.core.mvc.Controller} Controller
 	 */
 	function(Controller, UIComponent, Core, HorizontalLayout, VerticalLayout, Dialog, DialogType, Button, ButtonType, Label, MessageToast,
-		Text, TextArea, CheckBox, Input, MessageBox, JSONModel) {
+		Text, TextArea, CheckBox, Input, MessageBox) {
 		"use strict";
 
-		return Controller.extend("yit.CODE2DOC.controller.CriaDoc", {
+		return Controller.extend("yit.EXPERTDOCS.controller.CriaDoc", {
 
 			onInit: function() {
 
@@ -44,7 +44,28 @@ sap.ui.define([
 				});
 
 				var that = this;
-				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YCODE2DOC_SRV");
+				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YEXPERTDOCS_SRV");
+				
+				oModel.read("/LISTA_TEMPLATESSet", {
+					//filters: [filter1, filter2, filter3, filter4, filter5, filter6, filter7, filter8], 
+					success: function(oData) {
+						//debugger;
+
+						//that.getView().byId("btProxTela1").setVisible(true);
+						var userdata = new sap.ui.model.json.JSONModel({
+							"Result": oData.results
+						});
+						var cbotemplate = that.getView().byId("cboTemplate");
+
+						var oItemTemplate = new sap.ui.core.Item({
+							text: '{NOME_TEMPLATE}'
+						});
+						cbotemplate.setModel(userdata);
+						cbotemplate.bindItems("/Result", oItemTemplate);
+					},
+					error: function(err) {}
+				});
+				
 				oModel.read("/CRIA_DOCSet", {
 					filters: [filter1],
 					success: function(oData, oResponse) {
@@ -138,15 +159,54 @@ sap.ui.define([
 						//debugger;
 					}
 				});
+
+				///////////////////////////////////////////////////
+
+				// ///////////////////////////////////// FILTROS //////////////////////////////////////////////////
+				// 			// var fil_filter1 = this.byId("srcAmbiente").getSelectedKey();
+				// 			var fil_filter1 = this.byId("srcAmbiente").getValue();
+				// 			var filter1= new sap.ui.model.Filter({
+				// 				path: "AMBIENTE",
+				// 				// caso seja equal
+				// 				// operator: sap.ui.model.FilterOperator.EQ,
+				// 				// caso seja texto
+				// 				operator: sap.ui.model.FilterOperator.Contains,
+				// 				value1: fil_filter1	
+				// 			});
+
+				///////////////////////////////////////////////////
 			},
 			CreateNew: function() {
 				this.byId("tabListaDoc").setVisible(false);
 				this.byId("btCriarNovo").setVisible(false);
 				this.byId("btCriarVersao").setVisible(false);
+				this.byId("msgRodape").setVisible(false);
 				this.byId("btEscopo").setVisible(true);
 				this.getView().byId("WizCriaDoc").nextStep();
 				this.byId("btReiniciar").setVisible(true);
 
+				var that = this;
+				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YEXPERTDOCS_SRV");
+				
+				oModel.read("/LISTA_TEMPLATESSet", {
+					//filters: [filter1, filter2, filter3, filter4, filter5, filter6, filter7, filter8], 
+					success: function(oData) {
+						//debugger;
+
+						//that.getView().byId("btProxTela1").setVisible(true);
+						var userdata = new sap.ui.model.json.JSONModel({
+							"Result": oData.results
+						});
+						var cbotemplate = that.getView().byId("cboTemplate");
+
+						var oItemTemplate = new sap.ui.core.Item({
+							text: '{NOME_TEMPLATE}'
+						});
+						cbotemplate.setModel(userdata);
+						cbotemplate.bindItems("/Result", oItemTemplate);
+					},
+					error: function(err) {}
+				});
 			},
 			NewVersion: function() {
 				this.byId("tabListaDoc").setVisible(false);
@@ -168,7 +228,7 @@ sap.ui.define([
 				// alert(rows[0].getCells()[0].getText());
 				this.byId("cboTemplate").setValue(rows[0].getCells()[5].getText());
 				this.byId("txtIDDoc").setValue(rows[0].getCells()[0].getText());
-				
+
 				this.byId("txtTitET").setValue(rows[0].getCells()[6].getText());
 				this.byId("cboVersao").setValue(rows[0].getCells()[2].getText());
 				this.byId("txtNmProj").setValue(rows[0].getCells()[3].getText());
@@ -216,7 +276,7 @@ sap.ui.define([
 								path: "CLIENTE",
 								// caso seja equal
 								operator: sap.ui.model.FilterOperator.EQ,
-								
+
 								// caso seja texto
 								// operator: sap.ui.model.FilterOperator.Contains,
 								value1: fil_filter1
@@ -226,7 +286,7 @@ sap.ui.define([
 								path: "TEMPLATE",
 								// caso seja equal
 								operator: sap.ui.model.FilterOperator.EQ,
-								
+
 								// caso seja texto
 								// operator: sap.ui.model.FilterOperator.Contains,
 								value1: fil_filter2
@@ -236,7 +296,7 @@ sap.ui.define([
 								path: "TITULO_ET",
 								// caso seja equal
 								operator: sap.ui.model.FilterOperator.EQ,
-								
+
 								// caso seja texto
 								// operator: sap.ui.model.FilterOperator.Contains,
 								value1: fil_filter3
@@ -246,7 +306,7 @@ sap.ui.define([
 								path: "VERSAO",
 								// caso seja equal
 								operator: sap.ui.model.FilterOperator.EQ,
-								
+
 								// caso seja texto
 								// operator: sap.ui.model.FilterOperator.Contains,
 								value1: fil_filter4
@@ -256,7 +316,7 @@ sap.ui.define([
 								path: "NOME_PROJETO",
 								// caso seja equal
 								operator: sap.ui.model.FilterOperator.EQ,
-								
+
 								// caso seja texto
 								// operator: sap.ui.model.FilterOperator.Contains,
 								value1: fil_filter5
@@ -266,7 +326,7 @@ sap.ui.define([
 								path: "VERSAO",
 								// caso seja equal
 								operator: sap.ui.model.FilterOperator.EQ,
-								
+
 								// caso seja texto
 								// operator: sap.ui.model.FilterOperator.Contains,
 								value1: fil_filter6
@@ -276,7 +336,7 @@ sap.ui.define([
 								path: "GERENTE",
 								// caso seja equal
 								operator: sap.ui.model.FilterOperator.EQ,
-								
+
 								// caso seja texto
 								// operator: sap.ui.model.FilterOperator.Contains,
 								value1: fil_filter7
@@ -286,7 +346,7 @@ sap.ui.define([
 								path: "CRIADO_POR",
 								// caso seja equal
 								operator: sap.ui.model.FilterOperator.EQ,
-								
+
 								// caso seja texto
 								// operator: sap.ui.model.FilterOperator.Contains,
 								value1: fil_filter8
@@ -296,7 +356,7 @@ sap.ui.define([
 								path: "REVISADO_POR",
 								// caso seja equal
 								operator: sap.ui.model.FilterOperator.EQ,
-								
+
 								// caso seja texto
 								// operator: sap.ui.model.FilterOperator.Contains,
 								value1: fil_filter9
@@ -306,18 +366,18 @@ sap.ui.define([
 								path: "NOTA",
 								// caso seja equal
 								operator: sap.ui.model.FilterOperator.EQ,
-								
+
 								// caso seja texto
 								// operator: sap.ui.model.FilterOperator.Contains,
 								value1: fil_filter10
 							});
-							
+
 							var fil_filter11 = that.byId("txtIntro").getValue();
 							var filter11 = new sap.ui.model.Filter({
 								path: "INTRODUCAO",
 								// caso seja equal
 								operator: sap.ui.model.FilterOperator.EQ,
-								
+
 								// caso seja texto
 								// operator: sap.ui.model.FilterOperator.Contains,
 								value1: fil_filter11
@@ -327,7 +387,7 @@ sap.ui.define([
 								path: "REQUISITO",
 								// caso seja equal
 								operator: sap.ui.model.FilterOperator.EQ,
-								
+
 								// caso seja texto
 								// operator: sap.ui.model.FilterOperator.Contains,
 								value1: fil_filter12
@@ -337,7 +397,7 @@ sap.ui.define([
 								path: "DESC_SOLUCAO",
 								// caso seja equal
 								operator: sap.ui.model.FilterOperator.EQ,
-								
+
 								// caso seja texto
 								// operator: sap.ui.model.FilterOperator.Contains,
 								value1: fil_filter13
@@ -347,7 +407,7 @@ sap.ui.define([
 								path: "MACRO_ARQ",
 								// caso seja equal
 								operator: sap.ui.model.FilterOperator.EQ,
-								
+
 								// caso seja texto
 								// operator: sap.ui.model.FilterOperator.Contains,
 								value1: fil_filter14
@@ -357,7 +417,7 @@ sap.ui.define([
 								path: "DIAGRAMA",
 								// caso seja equal
 								operator: sap.ui.model.FilterOperator.EQ,
-								
+
 								// caso seja texto
 								// operator: sap.ui.model.FilterOperator.Contains,
 								value1: fil_filter15
@@ -367,15 +427,17 @@ sap.ui.define([
 								path: "ID_DOC",
 								// caso seja equal
 								operator: sap.ui.model.FilterOperator.EQ,
-								
+
 								// caso seja texto
 								// operator: sap.ui.model.FilterOperator.Contains,
 								value1: fil_filter16
 							});
 
-							var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YCODE2DOC_SRV");
+							var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YEXPERTDOCS_SRV");
 							oModel.read("/CRIA_DOCSet", {
-								filters: [filter1, filter2, filter3, filter4, filter5, filter6, filter7, filter8, filter9, filter10, filter11, filter12, filter13, filter14, filter15, filter16],
+								filters: [filter1, filter2, filter3, filter4, filter5, filter6, filter7, filter8, filter9, filter10, filter11, filter12,
+									filter13, filter14, filter15, filter16
+								],
 								success: function(oData, oResponse) {
 
 									//
@@ -425,7 +487,7 @@ sap.ui.define([
 			},
 
 			onSearch: function(oEvent) {
-				var oGlobalBusyDialog = new sap.m.BusyDialog();
+				// var oGlobalBusyDialog = new sap.m.BusyDialog();
 				// 			    oGlobalBusyDialog.open();	
 			}
 		});

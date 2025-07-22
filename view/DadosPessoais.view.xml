@@ -1,8 +1,8 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:u="sap.ui.unified" controllerName="yit.CODE2DOC.controller.DadosPessoais" displayBlock="true">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:u="sap.ui.unified" controllerName="yit.EXPERTDOCS.controller.DadosPessoais" displayBlock="true">
 	<Shell id="shell">
 		<App id="app">
 			<pages>
-				<Page title="CODE2DOC - Personalisar Perfil - Dados Pessoais" showNavButton="true" navButtonTooltip="Voltar" navButtonPress="Voltar" backgroundDesign="Solid">
+				<Page title="EXPERTDOCS - Personalisar Perfil - Dados Pessoais" showNavButton="true" navButtonTooltip="Voltar" navButtonPress="Voltar" backgroundDesign="Solid">
 					<content>
 						<Wizard validationSuccess="FinalizaProc" id="WizDadosPessoais" class="sapUiResponsivePadding--header sapUiResponsivePadding--content" complete="wizardCompletedHandler" stepActivate="false" showNextButton="false">
 						
@@ -39,7 +39,7 @@
 													</form:fields>
 												</form:FormElement>
 											
-												<form:FormElement label="Função no CODE2DOC">
+												<form:FormElement label="Função no EXPERTDOCS">
 													<form:fields>
 														<VBox>
 															<CheckBox id="__box1" text="Criação de Documento" editable="false"/>
@@ -94,6 +94,13 @@
 													<form:fields>
 														<VBox>
 															<Input id="txtUser" type="Text" width="400px" editable="false"/>
+														</VBox>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="Senha Atual">
+													<form:fields>
+														<VBox>
+															<Input id="txtSenhaAtual" type="Password" width="400px"/>
 														</VBox>
 													</form:fields>
 												</form:FormElement>

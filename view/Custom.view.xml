@@ -1,7 +1,7 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.f" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:u="sap.ui.unified" controllerName="yit.CODE2DOC.controller.Custom" displayBlock="true" height="100%">
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.f" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:u="sap.ui.unified" controllerName="yit.EXPERTDOCS.controller.Custom" displayBlock="true" height="100%">
 	<core:InvisibleText text="InvisibleText" id="text1"/>
 	<Page xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" 
-    title="CODE2DOC - Consulta de Documentos - Status e Versões" showNavButton="true" navButtonTooltip="Voltar" 
+    title="EXPERTDOCS - Consulta de Documentos - Status e Versões" showNavButton="true" navButtonTooltip="Voltar" 
     navButtonPress="Voltar" backgroundDesign="Solid" showFooter="false" enableScrolling="false" >
 
 		<f:DynamicPage id="dynamicPageId" showFooter="true" 

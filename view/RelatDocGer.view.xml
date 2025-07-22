@@ -1,0 +1,44 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:f="sap.f"
+	xmlns:layout="sap.ui.layout" xmlns:u="sap.ui.unified" controllerName="yit.EXPERTDOCS.controller.RelatDocGer" displayBlock="true">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page title="EXPERTDOCS - Criação de Documentos" showNavButton="true" navButtonTooltip="Voltar" navButtonPress="Voltar"
+					backgroundDesign="Solid">
+					<content>
+						<VBox>
+							<Title text="Relatório de Quantidade Gerada"/>
+							<!-- Filtro para Cliente, Mês e Ano -->
+							<HBox>
+								<Label text="Cliente:"/>
+								<Input id="cliente" placeholder="Digite o Cliente" width="150px"/>
+								<Label text="Mês:"/>
+								<Input id="mes" placeholder="Digite o Mês" width="80px"/>
+								<Label text="Ano:"/>
+								<Input id="ano" placeholder="Digite o Ano" width="80px"/>
+								<Button text="Filtrar" press="onFilter"/>
+							</HBox>
+							<!-- Tabela para exibir os dados -->
+							<Table id="relatorioTable" rows="{/dados}">
+								<columns>
+									<Column label="Cliente">
+										<Text text="{cliente}"/>
+									</Column>
+									<Column label="Mês">
+										<Text text="{mes}"/>
+									</Column>
+									<Column label="Ano">
+										<Text text="{ano}"/>
+									</Column>
+									<Column label="Quantidade Gerada">
+										<Text text="{qtde_gerados}"/>
+									</Column>
+								</columns>
+							</Table>
+						</VBox>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

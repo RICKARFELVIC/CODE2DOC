@@ -1,13 +1,10 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.f" xmlns:form="sap.form" xmlns:lform="sap.ui.layout.form"
 	xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:fb="sap.ui.comp.filterbar" xmlns:u="sap.ui.unified"
-	controllerName="yit.CODE2DOC.controller.Extracao" displayBlock="true" height="100%">
+	controllerName="yit.EXPERTDOCS.controller.Extracao" displayBlock="true" height="100%">
 	<core:InvisibleText text="InvisibleText" id="text1"/>
-	<Page xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" title="CODE2DOC - Seleção de Documentos"
+	<Page xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" title="EXPERTDOCS - Seleção de Documentos"
 		showNavButton="true" navButtonTooltip="Voltar" navButtonPress="Voltar" backgroundDesign="Solid" showFooter="false" enableScrolling="true">
-
-		
-									
-					
+	
 		<f:DynamicPage id="Page0" showFooter="true" fitContent="true" visible="true">
 			<!-- DynamicPage Title -->
 			<!--<f:title>-->
@@ -82,7 +79,7 @@
 					<Button id="AddMore0" type="Emphasized" text="Adicionar Mais Objetos" press="addMaisObj" visible="false">
 						<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
 					</Button>
-					<Button type="Accept" id="btSolicita0" text="Selecionar Documento" press="SelecDoc">
+					<Button type="Emphasized" id="btSolicita0" text="Selecionar Documento" press="SelecDoc">
 						<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
 					</Button>
 				</OverflowToolbar>

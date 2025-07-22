@@ -17,7 +17,7 @@ sap.ui.define([
 	function (Controller, MessageBox, MessageToast, Dialog, DialogType, Button, ButtonType, Label, Text, TextArea, ObjectStatus) {
 		"use strict";
 
-		return Controller.extend("yit.CODE2DOC.controller.Custom", {
+		return Controller.extend("yit.EXPERTDOCS.controller.Custom", {
 			onInit: function () {// FILTRO AMBIENTE
 			var StatusSel = this.getView().byId("filStatus").getSelectedKey();
 			var TagSolicitada = '';
@@ -112,7 +112,7 @@ sap.ui.define([
 		
 				
 		var that = this;
-				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YCODE2DOC_SRV");
+				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YEXPERTDOCS_SRV");
 				oModel.read("/GERADOR_TAGSSet", {
 			     filters: [filter1, filter2, filter3,filter4, filter5, filter6], 
 				 success : function(oData, oResponse) {
@@ -290,7 +290,7 @@ sap.ui.define([
 		
 				
 		var that = this;
-				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YCODE2DOC_SRV");
+				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YEXPERTDOCS_SRV");
 				oModel.read("/GERADOR_TAGSSet", {
 			     filters: [filter1, filter2, filter3,filter4, filter5, filter6], 
 				 success : function(oData, oResponse) {
@@ -404,7 +404,7 @@ sap.ui.define([
 			});
 				
 		var that = this;
-				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YCODE2DOC_SRV");
+				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YEXPERTDOCS_SRV");
 				oModel.read("/GERADOR_TAGSSet", {
 			     filters: [field1, field2], 
 				 success : function(oData, oResponse) {
@@ -503,7 +503,7 @@ sap.ui.define([
 			});
 				
 		var that = this;
-				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YCODE2DOC_SRV");
+				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YEXPERTDOCS_SRV");
 				oModel.read("/GERADOR_TAGSSet", {
 			     filters: [field1, field2], 
 				 success : function(oData, oResponse) {

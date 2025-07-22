@@ -9,7 +9,7 @@ sap.ui.define([
     function (Controller, MessageBox, MessageToast) {
 		"use strict";
 
-		return Controller.extend("yit.CODE2DOC.controller.Tcode", {
+		return Controller.extend("yit.EXPERTDOCS.controller.Tcode", {
 			onInit: function () {
 
 			},

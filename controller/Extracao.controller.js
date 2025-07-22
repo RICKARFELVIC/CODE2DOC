@@ -46,7 +46,7 @@ sap.ui.define([
 				});
 
 				var that = this;
-				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YCODE2DOC_SRV");
+				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YEXPERTDOCS_SRV");
 				oModel.read("/CRIA_DOCSet", {
 					filters: [filter1],
 					success: function(oData, oResponse) {
@@ -175,7 +175,7 @@ sap.ui.define([
 
 			//SELECIONAR ITEM
 			selItem: function() {
-				this.byId("btProxTela1").setVisible(true);
+				this.byId("btProxTela1").setVisible(false);
 				this.byId("AddMore").setVisible(true);
 				this.byId("AddObj").setVisible(true);
 				this.byId("Page2").setVisible(false);
@@ -189,6 +189,7 @@ sap.ui.define([
 			},
 
 			AddMore: function(oEvent) {
+				this.byId("btProxTela1").setVisible(true);
 
 				this.byId("Page2").setVisible(true);
 				var oButton = oEvent.getSource(),
@@ -320,7 +321,7 @@ sap.ui.define([
 					this._pPopover = Fragment.load({
 						id: oView.getId(),
 						// name: "sap.m.sample.PopoverNavCon.view.Popover",
-						name: "yit.CODE2DOC.view.Popover",
+						name: "yit.EXPERTDOCS.view.Popover",
 						controller: this
 					}).then(function(oPopover) {
 						oView.addDependent(oPopover);
@@ -478,7 +479,7 @@ sap.ui.define([
 				// });
 
 				var that = this;
-				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YCODE2DOC_SRV");
+				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YEXPERTDOCS_SRV");
 				oModel.read("/LISTA_PROGRAMASSet", {
 					filters: [filter2, filter3, filter4, filter5, filter6, filter7],
 					success: function(oData, oResponse) {
@@ -665,7 +666,7 @@ sap.ui.define([
 				});
 
 				var that = this;
-				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YCODE2DOC_SRV");
+				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YEXPERTDOCS_SRV");
 				oModel.read("/EXTRACAOSet", {
 					filters: [field1, field2, field3, field4, field5, field6, field7, field8, field9],
 					success: function(oData, oResponse) {
@@ -678,7 +679,7 @@ sap.ui.define([
 							MessageToast.show(oData.results[0].MSG);
 							that.Voltar();
 							this.byId("btSolicita").setVisible(false);
-						}else{
+						} else {
 							MessageToast.show(oData.results[0].MSG);
 							// alert("AQUI");
 							// var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
@@ -714,50 +715,54 @@ sap.ui.define([
 				// var tab = this.getView().byId("TabExtracao");
 				// filtro.setVisible(false);
 				// tab.setVisible(false);
+				var oTable = this.getView().byId("TabObjetos");
 
-				if (!this.oSubmitDialog) {
-					this.oSubmitDialog = new Dialog({
-						type: DialogType.Message,
-						title: "Confirmação de Dados",
-						content: [
-							new Label({
-								text: "Apelido para a Requisição do Documento",
-								labelFor: "nomeRequisicao"
-							}),
-							new Input("nomeRequisicao", {
-								width: "100%",
-								placeholder: "",
-								liveChange: function(oEvent) {
-									var sText = oEvent.getParameter("value");
-									this.oSubmitDialog.getBeginButton().setEnabled(sText.length > 0);
+				if (oTable.getItems() < 1) {
+					MessageBox.success("Selecione pelo menos um objeto !");
+				} else {
+					if (!this.oSubmitDialog) {
+						this.oSubmitDialog = new Dialog({
+							type: DialogType.Message,
+							title: "Confirmação de Dados",
+							content: [
+								new Label({
+									text: "Apelido para a Requisição do Documento",
+									labelFor: "nomeRequisicao"
+								}),
+								new Input("nomeRequisicao", {
+									width: "100%",
+									placeholder: "",
+									liveChange: function(oEvent) {
+										var sText = oEvent.getParameter("value");
+										this.oSubmitDialog.getBeginButton().setEnabled(sText.length > 0);
+									}.bind(this)
+								}),
+								new CheckBox("chkAgrupar", {
+									text: "Agrupar arquivos",
+									id: "chkAgrupar",
+									visible: false
+								})
+							],
+							beginButton: new Button({
+								type: ButtonType.Emphasized,
+								text: "Salvar Requisição",
+								enabled: false,
+								press: function() {
+									// var sText = Core.byId("nomeRequisicao").getValue();
+									// MessageToast.show("Requisição: " + sText + " criada com sucesso !");
+									this.oSubmitDialog.close();
+									this.Carrega();
 								}.bind(this)
 							}),
-							new CheckBox("chkAgrupar", {
-								text: "Agrupar arquivos",
-								id: "chkAgrupar",
-								visible: false
+							endButton: new Button({
+								text: "Cancelar",
+								press: function() {
+									this.oSubmitDialog.close();
+								}.bind(this)
 							})
-						],
-						beginButton: new Button({
-							type: ButtonType.Emphasized,
-							text: "Salvar Requisição",
-							enabled: false,
-							press: function() {
-								// var sText = Core.byId("nomeRequisicao").getValue();
-								// MessageToast.show("Requisição: " + sText + " criada com sucesso !");
-								this.oSubmitDialog.close();
-								this.Carrega();
-							}.bind(this)
-						}),
-						endButton: new Button({
-							text: "Cancelar",
-							press: function() {
-								this.oSubmitDialog.close();
-							}.bind(this)
-						})
-					});
+						});
+					}
 				}
-
 				this.oSubmitDialog.open();
 			},
 

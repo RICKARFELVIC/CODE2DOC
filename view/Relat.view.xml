@@ -1,6 +1,6 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.f" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:u="sap.ui.unified" controllerName="yit.CODE2DOC.controller.Relat" displayBlock="true" height="100%">
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.f" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:u="sap.ui.unified" controllerName="yit.EXPERTDOCS.controller.Relat" displayBlock="true" height="100%">
 	<core:InvisibleText text="InvisibleText" id="text1"/>
-	<Page xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" title="CODE2DOC - Relatórios" showNavButton="true" navButtonTooltip="Voltar" navButtonPress="Voltar" backgroundDesign="Solid" showFooter="false">
+	<Page xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" title="EXPERTDOCS - Relatórios" showNavButton="true" navButtonTooltip="Voltar" navButtonPress="Voltar" backgroundDesign="Solid" showFooter="false">
 
 		<f:DynamicPage id="dynamicPageId" headerExpanded="{/headerExpanded}" toggleHeaderOnTitleClick="{/titleClickable}" showFooter="true" fitContent="true" content="{/DOCUMENTOSet}">
 			<f:title>
@@ -14,7 +14,7 @@
 			<f:header>
 				<f:DynamicPageHeader pinnable="true" id="cont_map">
 					<f:content>
-						<fb:FilterBar xmlns:fb="sap.ui.comp.filterbar" clear="onClearFilters" reset="onReset" search="onSearch" showRestoreButton="true" showClearButton="true">
+						<fb:FilterBar xmlns:fb="sap.ui.comp.filterbar" clear="onClearFilters" reset="onReset" search="onSearch" showRestoreButton="true" showClearButton="true"  >
 							<fb:filterItems>
 								<!--Nome da Requisição-->
 								<fb:FilterItem name="NomeReq" label="Nome da Requisição" visibleInFilterBar="true">
@@ -47,7 +47,7 @@
 			</f:header>
             <f:content>
 					<!--LISTA-->
-        <Table mode="SingleSelectLeft" noDataText="Sem objetos para exibir" id="tableGer" visible="false" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+        <Table mode="SingleSelectLeft" noDataText="Sem objetos para exibir" id="tableGer" visible="false" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" selectionChange="selecionaItem">
 							<columns>
 								<Column width="11rem">
 									<header>
@@ -296,7 +296,7 @@
 				<!--<Button id="btBaixa" type="Emphasized" text="Baixar arquivo" press="onDownloadPress">-->
 				<!--	<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>-->
 				<!--</Button>-->
-				<Button id="btExclui" type="Reject" text="Excluir" press="Exclui">
+				<Button id="btExclui" type="Reject" text="Excluir" press="Exclui" visible="false">
 					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
 				</Button>
 			</OverflowToolbar>

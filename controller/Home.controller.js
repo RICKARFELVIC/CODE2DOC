@@ -7,7 +7,7 @@ sap.ui.define([
 	function (Controller) {
 		"use strict";
 
-		return Controller.extend("yit.CODE2DOC.controller.Home", {
+		return Controller.extend("yit.EXPERTDOCS.controller.Home", {
 			onInit: function () { },
 			
 			onAfterRendering: function() {
@@ -15,7 +15,7 @@ sap.ui.define([
 				oGlobalBusyDialog.open();
 			
 				var that = this;
-				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YCODE2DOC_SRV");
+				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YEXPERTDOCS_SRV");
 				oModel.read("/CHECK_USERSet", {
 					// filters: [filter1, filter2, filter3, filter4, filter5, filter6, filter7, filter8],
 					success: function(oData, oResponse) {
@@ -99,6 +99,12 @@ sap.ui.define([
             Go_CustomEmpresa: function(oEvent) {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("CustomEmpresa");
+            },
+            
+            // TILE 7
+            Go_Relatorios: function(oEvent) {
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("RelatDocGer");
             },
                 
             Go_Upload: function(oEvent) {

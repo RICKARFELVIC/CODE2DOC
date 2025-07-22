@@ -27,7 +27,7 @@ sap.ui.define([
 		Text, TextArea, CheckBox, Input, MessageBox, JSONModel) {
 		"use strict";
 
-		return Controller.extend("yit.CODE2DOC.controller.GestaoAcessos", {
+		return Controller.extend("yit.EXPERTDOCS.controller.GestaoAcessos", {
 
 			onInit: function() {
 
@@ -42,7 +42,7 @@ sap.ui.define([
 				});
 
 				var that = this;
-				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YCODE2DOC_SRV");
+				var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YEXPERTDOCS_SRV");
 				oModel.read("/GESTAO_USUARIOSSet", {
 					filters: [filter1],
 					success: function(oData, oResponse) {
@@ -65,28 +65,59 @@ sap.ui.define([
 									}), new sap.m.Text({
 										text: "{NOME} {SOBRENOME}",
 										textAlign: "Center"
-									}), new sap.m.Text({
-										text: "{TILE_CRIA_DOC}",
-										textAlign: "Center"
-									}), new sap.m.Text({
-										text: "{TILE_ADD_OBJ}",
-										textAlign: "Center"
-									}), new sap.m.Text({
-										text: "{TILE_CONS_DOC}",
-										textAlign: "Center"
-									}), new sap.m.Text({
-										text: "{TILE_DADOS_PESS}",
-										textAlign: "Center"
-									}), new sap.m.Text({
-										text: "{TILE_ACESSOS}",
-										textAlign: "Center"
-									}), new sap.m.Text({
-										text: "{TILE_CUSTOMIZA}",
-										textAlign: "Center"
-									}), new sap.m.Text({
-										text: "{STATUS}",
-										textAlign: "Center"
+									}),
+									new sap.ui.core.Icon({
+										src: {path: "TILE_CRIA_DOC",formatter: function(value) { return value === "X" ? "sap-icon://accept" : "sap-icon://decline";}},
+										color: {path: "TILE_CRIA_DOC",formatter: function(value) {return value === "X" ? "green" : "red";}},
+										layoutData: new sap.m.FlexItemData({growFactor: 1}),
+										decorative: false
+									}),
+									new sap.ui.core.Icon({
+										src: {path: "TILE_ADD_OBJ",formatter: function(value) { return value === "X" ? "sap-icon://accept" : "sap-icon://decline";}},
+										color: {path: "TILE_ADD_OBJ",formatter: function(value) {return value === "X" ? "green" : "red";}},
+										layoutData: new sap.m.FlexItemData({growFactor: 1}),
+										decorative: false
+									}),
+									new sap.ui.core.Icon({
+										src: {path: "TILE_CONS_DOC",formatter: function(value) { return value === "X" ? "sap-icon://accept" : "sap-icon://decline";}},
+										color: {path: "TILE_CONS_DOC",formatter: function(value) {return value === "X" ? "green" : "red";}},
+										layoutData: new sap.m.FlexItemData({growFactor: 1}),
+										decorative: false
+									}),
+									new sap.ui.core.Icon({
+										src: {path: "TILE_DADOS_PESS",formatter: function(value) { return value === "X" ? "sap-icon://accept" : "sap-icon://decline";}},
+										color: {path: "TILE_DADOS_PESS",formatter: function(value) {return value === "X" ? "green" : "red";}},
+										layoutData: new sap.m.FlexItemData({growFactor: 1}),
+										decorative: false
+									}),
+									new sap.ui.core.Icon({
+										src: {path: "TILE_ACESSOS",formatter: function(value) { return value === "X" ? "sap-icon://accept" : "sap-icon://decline";}},
+										color: {path: "TILE_ACESSOS",formatter: function(value) {return value === "X" ? "green" : "red";}},
+										layoutData: new sap.m.FlexItemData({growFactor: 1}),
+										decorative: false
+									}),
+									new sap.ui.core.Icon({
+										src: {path: "TILE_CUSTOMIZA",formatter: function(value) { return value === "X" ? "sap-icon://accept" : "sap-icon://decline";}},
+										color: {path: "TILE_CUSTOMIZA",formatter: function(value) {return value === "X" ? "green" : "red";}},
+										layoutData: new sap.m.FlexItemData({growFactor: 1}),
+										decorative: false
+									}),
+									new sap.ui.core.Icon({
+										src: {path: "TILE_RELATORIO",formatter: function(value) { return value === "X" ? "sap-icon://accept" : "sap-icon://decline";}},
+										color: {path: "TILE_RELATORIO",formatter: function(value) {return value === "X" ? "green" : "red";}},
+										layoutData: new sap.m.FlexItemData({growFactor: 1}),
+										decorative: false
+									}), 
+									new sap.ui.core.Icon({
+										src: {path: "STATUS",formatter: function(value) { return value === "X" ? "sap-icon://unlocked" : "sap-icon://locked";}},
+										tooltip: {path: "STATUS",formatter: function(value) {return value === "X" ? "Ativo" : "Bloqueado";}},
+										layoutData: new sap.m.FlexItemData({growFactor: 1}),
+										decorative: false
 									})
+									// new sap.m.Text({
+									// 	text: "{STATUS}",
+									// 	textAlign: "Center"
+									// })
 								]
 							})
 						});
@@ -100,13 +131,13 @@ sap.ui.define([
 			SelListaUsuarios: function(oEvent) {
 				var rows = this.byId("tabListaUsuarios").getSelectedItems();
 
-				if (rows[0].getCells()[8].getText() === "Ativo") {
+				if (rows[0].getCells()[9].getTooltip() === "Ativo") {
 					this.byId("btBloquear").setVisible(true);
 					this.byId("btRedefinir").setVisible(true);
 					this.byId("btEditar").setVisible(true);
 					this.byId("btDesbloquear").setVisible(false);
 				}
-				if (rows[0].getCells()[8].getText() === "Bloqueado") {
+				if (rows[0].getCells()[9].getTooltip() === "Bloqueado") {
 					this.byId("btDesbloquear").setVisible(true);
 					this.byId("btBloquear").setVisible(false);
 					this.byId("btEditar").setVisible(false);
@@ -117,7 +148,7 @@ sap.ui.define([
 			CreateNew: function() {
 				this.getView().byId("WizGestaoAcessos").nextStep();
 				this.byId("tabListaUsuarios").setVisible(false);
-				// this.byId("btCriarNovo").setVisible(false);
+				this.byId("btCriarNovo").setVisible(true);
 				// this.byId("btCriarVersao").setVisible(false);
 				// this.byId("btEscopo").setVisible(true);
 				// this.byId("btReiniciar").setVisible(true);
@@ -348,7 +379,7 @@ sap.ui.define([
 								value1: fil_filter16
 							});
 
-							var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YCODE2DOC_SRV");
+							var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/YEXPERTDOCS_SRV");
 							oModel.read("/CRIA_DOCSet", {
 								filters: [filter1, filter2, filter3, filter4, filter5, filter6, filter7, filter8, filter9, filter10, filter11, filter12,
 									filter13, filter14, filter15, filter16
